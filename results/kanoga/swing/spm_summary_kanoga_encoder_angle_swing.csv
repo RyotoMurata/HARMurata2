@@ -1,0 +1,3 @@
+subject,channel,phase,n_clusters,cluster_id,start_pct,end_pct,peak_t,p_corrected,dz_mean_in_cluster,T,alpha,h0reject
+kanoga,encoder_angle,swing,2,1,1.0,36.0,9.466896245396565,0.00011045779387308663,-2.238579838301024,101,0.05,True
+kanoga,encoder_angle,swing,2,2,54.0,71.0,5.544908831337758,0.010227916374134338,1.5425752995371138,101,0.05,True

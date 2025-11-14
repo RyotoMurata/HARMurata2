@@ -1,0 +1,4 @@
+subject,channel,phase,n_clusters,cluster_id,start_pct,end_pct,peak_t,p_corrected,dz_mean_in_cluster,T,alpha,h0reject
+kanoga,grf_z,stance,3,1,5.0,11.0,7.990760249353705,0.0003991875471009987,-2.234905002307674,101,0.05,True
+kanoga,grf_z,stance,3,2,27.0,87.0,28.81252891135535,0.0,4.27326266460952,101,0.05,True
+kanoga,grf_z,stance,3,3,97.0,100.0,6.935174865767256,0.021058557020682267,-1.9715224831127434,101,0.05,True

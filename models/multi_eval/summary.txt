@@ -1,0 +1,15 @@
+MODEL rf_dataset_kanoga_all	size	51115909
+EVAL rf_dataset_kanoga_all	ramp_t6_kanoga_set-0006	acc	0.830320
+EVAL rf_dataset_kanoga_all	ramp_t6_kaneishi_set-0006	acc	0.287564
+EVAL rf_dataset_kanoga_all	stair_t8_kanoga_set-0006	acc	0.849926
+EVAL rf_dataset_kanoga_all	stair_t6_kaneishi_set-0006	acc	0.314577
+MODEL rf_dataset_kaneishi_all	size	40793541
+EVAL rf_dataset_kaneishi_all	ramp_t6_kanoga_set-0006	acc	0.351878
+EVAL rf_dataset_kaneishi_all	ramp_t6_kaneishi_set-0006	acc	0.376053
+EVAL rf_dataset_kaneishi_all	stair_t8_kanoga_set-0006	acc	0.408863
+EVAL rf_dataset_kaneishi_all	stair_t6_kaneishi_set-0006	acc	0.915817
+MODEL ALL	size	121114789
+EVAL ALL	ramp_t6_kanoga_set-0006	acc	0.776773
+EVAL ALL	ramp_t6_kaneishi_set-0006	acc	0.382837
+EVAL ALL	stair_t8_kanoga_set-0006	acc	0.866765
+EVAL ALL	stair_t6_kaneishi_set-0006	acc	0.909615

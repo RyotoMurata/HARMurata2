@@ -1,0 +1,55 @@
+モデル: ALL
+モデルサイズ: 26451686 B
+ハイパーパラメータ: n_estimators=300, max_depth=10, random_state=0
+特徴量（85列）: acc_x_mean, acc_x_std, acc_x_iqr, acc_x_rms, acc_x_kurtosis, acc_y_mean, acc_y_std, acc_y_iqr, acc_y_rms, acc_y_kurtosis, acc_z_mean, acc_z_std, acc_z_iqr, acc_z_rms, acc_z_kurtosis, gyro_x_mean, gyro_x_std, gyro_x_iqr, gyro_x_rms, gyro_x_kurtosis, gyro_y_mean, gyro_y_std, gyro_y_iqr, gyro_y_rms, gyro_y_kurtosis, gyro_z_mean, gyro_z_std, gyro_z_iqr, gyro_z_rms, gyro_z_kurtosis, quat_w_mean, quat_w_std, quat_w_iqr, quat_w_rms, quat_w_kurtosis, quat_x_mean, quat_x_std, quat_x_iqr, quat_x_rms, quat_x_kurtosis, quat_y_mean, quat_y_std, quat_y_iqr, quat_y_rms, quat_y_kurtosis, quat_z_mean, quat_z_std, quat_z_iqr, quat_z_rms, quat_z_kurtosis, encoder_angle_mean, encoder_angle_std, encoder_angle_iqr, encoder_angle_rms, encoder_angle_kurtosis, grf_x_mean, grf_x_std, grf_x_iqr, grf_x_rms, grf_x_kurtosis, grf_y_mean, grf_y_std, grf_y_iqr, grf_y_rms, grf_y_kurtosis, grf_z_mean, grf_z_std, grf_z_iqr, grf_z_rms, grf_z_kurtosis, grt_x_mean, grt_x_std, grt_x_iqr, grt_x_rms, grt_x_kurtosis, grt_y_mean, grt_y_std, grt_y_iqr, grt_y_rms, grt_y_kurtosis, grt_z_mean, grt_z_std, grt_z_iqr, grt_z_rms, grt_z_kurtosis
+学習CSV: Featured_data\rf_dataset_kanoga_all.csv, Featured_data\rf_dataset_kaneishi_all.csv
+テスト入力: Labelled_data\ramp_t6_kanoga_set-0006.txt
+テスト窓: 250 ms, ホップ: 10 ms, fs: 推定 Hz
+Accuracy: 0.685675
+
+Classification report:
+               precision    recall  f1-score   support
+
+   Level-walk       0.67      0.78      0.72       532
+  Ramp-ascent       0.93      0.63      0.75       363
+ Ramp-descent       0.90      0.65      0.76       412
+ Stair-ascent       0.00      0.00      0.00         0
+Stair-descent       0.00      0.00      0.00         0
+         Stop       0.74      0.58      0.65       131
+
+     accuracy                           0.69      1438
+    macro avg       0.54      0.44      0.48      1438
+ weighted avg       0.81      0.69      0.73      1438
+
+
+Labels order:
+Level-walk, Ramp-ascent, Ramp-descent, Stop
+
+混同行列（行=true, 列=pred）:
+414	16	29	6
+105	228	0	0
+68	0	268	21
+34	0	0	76
+
+上位特徴量（importance）:
+   rank  importance        feature
+1   0.051639   encoder_angle_rms
+2   0.050773   encoder_angle_mean
+3   0.042876   gyro_z_rms
+4   0.033375   gyro_z_mean
+5   0.031915   grf_x_mean
+6   0.030239   encoder_angle_std
+7   0.029845   acc_z_rms
+8   0.026709   acc_z_std
+9   0.024981   grt_y_mean
+10   0.023317   grt_y_rms
+11   0.022228   acc_x_rms
+12   0.021755   grf_z_mean
+13   0.021692   gyro_x_rms
+14   0.020606   encoder_angle_iqr
+15   0.020007   grf_x_rms
+16   0.019846   grt_y_std
+17   0.019754   gyro_z_std
+18   0.019492   acc_z_mean
+19   0.017905   quat_z_rms
+20   0.017431   gyro_y_rms

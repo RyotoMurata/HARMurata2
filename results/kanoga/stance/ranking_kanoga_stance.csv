@@ -1,0 +1,17 @@
+subject,phase,channel,has_significance,n_sig_clusters,best_p_corrected,max_abs_t,total_sig_span_pct,max_abs_dz_mean_in_clusters
+kanoga,stance,grf_x,True,2,0.0,8.325553891587075,55.0,1.9911246912945664
+kanoga,stance,grt_x,True,4,0.0,10.075691256083395,51.0,2.185405691634964
+kanoga,stance,gyro_y,True,1,0.0,8.751462322566393,45.0,2.1313020076390243
+kanoga,stance,grt_z,True,2,0.0,12.761414167214364,30.0,2.4738717878033585
+kanoga,stance,grt_y,True,4,2.249194164249957e-10,11.51046853338931,29.0,2.449150346389055
+kanoga,stance,gyro_z,True,2,0.0,9.881985460460562,28.0,2.27103953189086
+kanoga,stance,grf_y,True,2,2.4358293160275934e-12,8.400466709206832,19.0,2.067015067049874
+kanoga,stance,grf_z,True,1,2.806574264102579e-07,7.892739355012411,15.0,1.9248447264866182
+kanoga,stance,acc_z,True,3,2.7420128269728394e-05,11.74432912864205,6.0,2.8287329977052
+kanoga,stance,gyro_x,True,1,0.0009390533534938683,5.578919411071432,4.0,1.6302044654527204
+kanoga,stance,acc_x,False,0,1.0,0.0,0.0,
+kanoga,stance,acc_y,False,0,1.0,0.0,0.0,
+kanoga,stance,quat_w,False,0,1.0,0.0,0.0,
+kanoga,stance,quat_x,False,0,1.0,0.0,0.0,
+kanoga,stance,quat_y,False,0,1.0,0.0,0.0,
+kanoga,stance,quat_z,False,0,1.0,0.0,0.0,

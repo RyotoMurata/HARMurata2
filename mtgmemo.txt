@@ -1,0 +1,63 @@
+Top features by importance (full training):
+   rank  importance       feature
+      1   0.039914   grt_x_rms
+      2   0.038317   grt_x_std
+      3   0.037272   grt_y_rms
+      4   0.035812   grt_y_std
+      5   0.031689   gyro_y_std
+      6   0.031071   gyro_z_rms
+      7   0.030585   acc_z_iqr
+      8   0.027454   gyro_z_std
+      9   0.027076   grf_y_std
+     10   0.025931   quat_w_std
+     11   0.023352   grt_z_std
+     12   0.022768   encoder_angle_std
+     13   0.022215   grt_y_mean
+     14   0.020915   gyro_y_rms
+     15   0.019860   quat_w_rms
+     16   0.019513   acc_y_iqr
+     17   0.017897   encoder_angle_rms
+     18   0.017493   grf_y_rms
+     19   0.017208   quat_y_rms
+     20   0.017062   acc_y_rms
+[3/4] Building evaluation windows from external files 
+       Eval windows: 332 (features=85)
+[Parallel(n_jobs=16)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=16)]: Done  18 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=16)]: Done 168 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=16)]: Done 300 out of 300 | elapsed:    0.0s finished
+[4/4] External evaluation results:
+Accuracy: 0.9036
+
+5回に一回くらい階段ぶつかっている（かも）
+外れ値外す、正則化
+時間的に後半のデータがテストになるのが主流。10-foldのcross-validation.1サンプルだけ出すのは似すぎる。⇒cross-validationする
+ユーザー変えてみる。
+分散は大きくとらえたい。まばらに広くとらえたい。
+義足の場合はそんなに変わらない（人や日の違い）。気合いでデータとりまくれば、汎用性出せるのでは。高性能だし、汎用性が高いもの作れるかも。
+実機の性能：結構低いの。メモリが足りない。MBオーダーの処理が厳しい。逐次処理ならできるが、バッジ処理だと難しいかも。
+他の制御などでもうメモリが使われている。外付けで足すかも。IOSで処理も検討。どのデータが必要かも重要。どこに絞るかを考える必要あり。sk-learnはモデルサイズを吐き出せる。⇒どれくらいのモデルサイズになるのかを知る。（数MBかも）
+①データの処理を進める
+②評価の仕方をOpenテストに近いように
+③環境が必要なメモリを調べる⇒モデルがどれくらいのサイズか？
+RF：最初の検証にはいいけど、、シンプルなモデル（線形なら線形判別いいんじゃないか）⇒それより複雑なら非線形性に対応できるモデル
+機械学習自体にあんまり評価ないかも、、＋制御だと新規性
+物、データを取れて個々の問題を取れる。例：メモリの問題ならRF、とか。具体化した問題を探して掘り下げる。
+Classification report:
+               precision    recall  f1-score   support
+
+   Level-walk       0.97      0.72      0.83        80
+ Stair-ascent       0.88      1.00      0.94       109
+Stair-descent       0.94      0.96      0.95       117
+         Stop       0.72      0.81      0.76        26
+
+     accuracy                           0.90       332
+    macro avg       0.88      0.87      0.87       332
+ weighted avg       0.91      0.90      0.90       332
+
+Confusion matrix (rows=true, cols=pred):
+           Level-walk    Stair-ascent   Stair-descent            Stop
+Level-walk        58              10               7               5
+Stair-ascent       0             109               0               0
+Stair-descent      2               0             112               3
+  Stop             0               5               0              21

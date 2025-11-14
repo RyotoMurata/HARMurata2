@@ -1,0 +1,200 @@
+        return None
+    rest = line[idx + 1 :].strip()
+    rest = (
+        rest.replace("uart:~$", " ")
+        .replace("uart:$", " ")
+        .replace("uart:", " ")
+        .strip()
+    )
+    quoted = _re.findall(r'"([^"]+)"', rest)
+    label = None
+    if quoted:
+        for q in quoted:
+            if not q.startswith("SetID="):
+                label = q
+                break
+        qpos = rest.find('"')
+        if qpos >= 0:
+            rest = rest[:qpos].strip()
+    vals: List[float] = []
+    for tok in rest.split():
+        try:
+            vals.append(float(tok))
+        except ValueError:
+            return None
+    if len(vals) < 17:
+        return None
+    return vals[:17], label
+
+
+def sliding_windows(t: np.ndarray, window_sec: float, hop_sec: float) -> List[tuple[int, int]]:
+    if t.size == 0:
+        return []
+    n = t.size
+    t_start = float(t[0])
+    t_end_total = float(t[-1])
+    starts: List[int] = []
+    ends: List[int] = []
+    current = t_start
+    i0 = 0
+    while current + window_sec <= t_end_total + 1e-9:
+        while i0 < n and t[i0] < current - 1e-12:
+            i0 += 1
+        wend = current + window_sec + 1e-12
+        i1 = i0
+        while i1 < n and t[i1] <= wend:
+            i1 += 1
+        if i1 - i0 >= 2:
+            starts.append(i0)
+            ends.append(i1 - 1)
+        current += hop_sec
+    return list(zip(starts, ends))
+
+
+def label_at_window_median(labels: Sequence[object]):
+    n = len(labels)
+    if n == 0:
+        return None
+    mid = n // 2
+    if labels[mid] is not None:
+        return labels[mid]
+    for off in range(1, n):
+        for cand in (mid - off, mid + off):
+            if 0 <= cand < n and labels[cand] is not None:
+                return labels[cand]
+    return None
+
+
+def compute_window_features(data: np.ndarray, t: np.ndarray, stat_names: Sequence[str]) -> List[float]:
+    # replicate the stats used in Build_RF_dataset
+    def stat_mean(arr, tt):
+        return float(np.mean(arr))
+
+    def stat_std(arr, tt):
+        return float(np.std(arr, ddof=0))
+
+    def stat_min(arr, tt):
+        return float(np.min(arr))
+
+    def stat_max(arr, tt):
+        return float(np.max(arr))
+
+    def stat_range(arr, tt):
+        return float(np.max(arr) - np.min(arr))
+
+    def stat_median(arr, tt):
+        return float(np.median(arr))
+
+    def stat_iqr(arr, tt):
+        q75 = np.percentile(arr, 75)
+        q25 = np.percentile(arr, 25)
+        return float(q75 - q25)
+
+    def stat_rms(arr, tt):
+        return float(np.sqrt(np.mean(np.square(arr))))
+
+    def stat_skewness(arr, tt):
+        mu = np.mean(arr)
+        sd = np.std(arr, ddof=0)
+        if sd == 0:
+            return 0.0
+        m3 = np.mean((arr - mu) ** 3)
+        return float(m3 / (sd ** 3))
+
+    def stat_kurtosis(arr, tt):
+        mu = np.mean(arr)
+        sd = np.std(arr, ddof=0)
+        if sd == 0:
+            return 0.0
+        m4 = np.mean((arr - mu) ** 4)
+        return float(m4 / (sd ** 4))
+
+    def stat_zcr(arr, tt):
+        s = np.sign(arr)
+        s[s == 0] = 1
+        return float(np.sum(s[1:] * s[:-1] < 0))
+
+    def stat_abs_integral(arr, tt):
+        if len(arr) < 2:
+            return 0.0
+        trapezoid = getattr(np, "trapezoid", None)
+        if trapezoid is not None:
+            return float(trapezoid(np.abs(arr), tt))
+        else:
+            return float(np.trapz(np.abs(arr), tt))
+
+    STAT_FUNCS = {
+        "mean": stat_mean,
+        "std": stat_std,
+        "min": stat_min,
+        "max": stat_max,
+        "range": stat_range,
+        "median": stat_median,
+        "iqr": stat_iqr,
+        "rms": stat_rms,
+        "skewness": stat_skewness,
+        "kurtosis": stat_kurtosis,
+        "zcr": stat_zcr,
+        "abs_integral": stat_abs_integral,
+    }
+
+    row: List[float] = []
+    for col in range(data.shape[1]):
+        x = data[:, col]
+        for st in stat_names:
+            row.append(float(STAT_FUNCS[st](x, t)))
+    return row
+
+
+def feature_headers_for(stats: Sequence[str]) -> List[str]:
+    headers: List[str] = []
+    for ch in FEATURE_NAMES:
+        for st in stats:
+            headers.append(f"{ch}_{st}")
+    return headers
+
+
+def build_eval_matrix(files: List[Path], stats: Sequence[str], window_sec: float, hop_sec: float):
+    X_rows: List[List[float]] = []
+    y_rows: List[str] = []
+    from datetime import datetime as _dt
+
+    for fp in files:
+        t0: _dt | None = None
+        times: List[float] = []
+        rows: List[List[float]] = []
+        labels: List[object] = []
+        with fp.open("r", encoding="utf-8", errors="ignore") as f:
+            for line in f:
+                ts = parse_timestamp(line)
+                if ts is None:
+                    continue
+                parsed = parse_values_label_setid(line)
+                if parsed is None:
+                    continue
+                vals, lbl = parsed
+                if t0 is None:
+                    t0 = ts
+                times.append((ts - t0).total_seconds())
+                rows.append(vals)
+                labels.append(lbl)
+        if not rows:
+            continue
+        t = np.asarray(times, dtype=float)
+        data = np.asarray(rows, dtype=float)
+        for a, b in sliding_windows(t, window_sec, hop_sec):
+            t_sub = t[a : b + 1]
+            d_sub = data[a : b + 1, :]
+            lbl_sub = labels[a : b + 1]
+            lbl = label_at_window_median(lbl_sub)
+            if lbl is None:
+                continue
+            feats = compute_window_features(d_sub, t_sub, stats)
+            X_rows.append([float(v) for v in feats])
+            y_rows.append(str(lbl))
+    X = np.asarray(X_rows, dtype=float) if X_rows else np.zeros((0, len(FEATURE_NAMES) * len(stats)))
+    y = np.asarray(y_rows, dtype=str) if y_rows else np.zeros((0,), dtype=str)
+    return X, y
+
+
+def _expand_paths_from_strings(paths: Sequence[str]) -> List[Path]:

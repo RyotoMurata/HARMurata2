@@ -1,0 +1,53 @@
+モデル: ALL
+モデルサイズ: 17641291 B
+ハイパーパラメータ: n_estimators=200, max_depth=10, random_state=0
+特徴量（85列）: acc_x_mean, acc_x_std, acc_x_iqr, acc_x_rms, acc_x_kurtosis, acc_y_mean, acc_y_std, acc_y_iqr, acc_y_rms, acc_y_kurtosis, acc_z_mean, acc_z_std, acc_z_iqr, acc_z_rms, acc_z_kurtosis, gyro_x_mean, gyro_x_std, gyro_x_iqr, gyro_x_rms, gyro_x_kurtosis, gyro_y_mean, gyro_y_std, gyro_y_iqr, gyro_y_rms, gyro_y_kurtosis, gyro_z_mean, gyro_z_std, gyro_z_iqr, gyro_z_rms, gyro_z_kurtosis, quat_w_mean, quat_w_std, quat_w_iqr, quat_w_rms, quat_w_kurtosis, quat_x_mean, quat_x_std, quat_x_iqr, quat_x_rms, quat_x_kurtosis, quat_y_mean, quat_y_std, quat_y_iqr, quat_y_rms, quat_y_kurtosis, quat_z_mean, quat_z_std, quat_z_iqr, quat_z_rms, quat_z_kurtosis, encoder_angle_mean, encoder_angle_std, encoder_angle_iqr, encoder_angle_rms, encoder_angle_kurtosis, grf_x_mean, grf_x_std, grf_x_iqr, grf_x_rms, grf_x_kurtosis, grf_y_mean, grf_y_std, grf_y_iqr, grf_y_rms, grf_y_kurtosis, grf_z_mean, grf_z_std, grf_z_iqr, grf_z_rms, grf_z_kurtosis, grt_x_mean, grt_x_std, grt_x_iqr, grt_x_rms, grt_x_kurtosis, grt_y_mean, grt_y_std, grt_y_iqr, grt_y_rms, grt_y_kurtosis, grt_z_mean, grt_z_std, grt_z_iqr, grt_z_rms, grt_z_kurtosis
+学習CSV: Featured_data\rf_dataset_kanoga_all.csv, Featured_data\rf_dataset_kaneishi_all.csv
+テスト入力: Labelled_data\stair_t8_kanoga_set-0006.txt
+テスト窓: 250 ms, ホップ: 25 ms, fs: 推定 Hz
+Accuracy: 0.839681
+
+Classification report:
+               precision    recall  f1-score   support
+
+   Level-walk       0.76      0.70      0.73       281
+ Stair-ascent       0.85      0.92      0.88       362
+Stair-descent       0.91      0.93      0.92       389
+         Stop       0.71      0.57      0.63        97
+
+     accuracy                           0.84      1129
+    macro avg       0.81      0.78      0.79      1129
+ weighted avg       0.83      0.84      0.84      1129
+
+
+Labels order:
+Level-walk, Stair-ascent, Stair-descent, Stop
+
+混同行列（行=true, 列=pred）:
+197	43	24	17
+18	334	4	6
+19	8	362	0
+24	8	10	55
+
+上位特徴量（importance）:
+   rank  importance        feature
+1   0.050711   encoder_angle_mean
+2   0.050392   encoder_angle_rms
+3   0.041378   gyro_z_rms
+4   0.035169   gyro_z_mean
+5   0.031380   grf_x_mean
+6   0.030131   encoder_angle_std
+7   0.029590   acc_z_rms
+8   0.027720   acc_z_std
+9   0.024758   grt_y_mean
+10   0.024099   acc_x_rms
+11   0.023514   grt_y_rms
+12   0.022334   gyro_x_rms
+13   0.022249   grf_z_mean
+14   0.021569   gyro_z_std
+15   0.020685   encoder_angle_iqr
+16   0.020421   grf_x_rms
+17   0.019328   acc_z_mean
+18   0.019327   grt_y_std
+19   0.017903   gyro_y_rms
+20   0.017687   quat_z_rms

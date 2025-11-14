@@ -1,0 +1,54 @@
+モデル: rf_dataset_kaneishi_all
+モデルサイズ: 5952012 B
+ハイパーパラメータ: n_estimators=100, max_depth=10, random_state=0
+特徴量（85列）: acc_x_mean, acc_x_std, acc_x_min, acc_x_max, acc_x_rms, acc_y_mean, acc_y_std, acc_y_min, acc_y_max, acc_y_rms, acc_z_mean, acc_z_std, acc_z_min, acc_z_max, acc_z_rms, gyro_x_mean, gyro_x_std, gyro_x_min, gyro_x_max, gyro_x_rms, gyro_y_mean, gyro_y_std, gyro_y_min, gyro_y_max, gyro_y_rms, gyro_z_mean, gyro_z_std, gyro_z_min, gyro_z_max, gyro_z_rms, quat_w_mean, quat_w_std, quat_w_min, quat_w_max, quat_w_rms, quat_x_mean, quat_x_std, quat_x_min, quat_x_max, quat_x_rms, quat_y_mean, quat_y_std, quat_y_min, quat_y_max, quat_y_rms, quat_z_mean, quat_z_std, quat_z_min, quat_z_max, quat_z_rms, encoder_angle_mean, encoder_angle_std, encoder_angle_min, encoder_angle_max, encoder_angle_rms, grf_x_mean, grf_x_std, grf_x_min, grf_x_max, grf_x_rms, grf_y_mean, grf_y_std, grf_y_min, grf_y_max, grf_y_rms, grf_z_mean, grf_z_std, grf_z_min, grf_z_max, grf_z_rms, grt_x_mean, grt_x_std, grt_x_min, grt_x_max, grt_x_rms, grt_y_mean, grt_y_std, grt_y_min, grt_y_max, grt_y_rms, grt_z_mean, grt_z_std, grt_z_min, grt_z_max, grt_z_rms
+学習CSV: Featured_data\rf_dataset_kaneishi_all.csv
+テスト入力: Labelled_data\ramp_t6_kaneishi_set-0006.txt
+テスト窓: 250 ms, ホップ: 25 ms, fs: 推定 Hz
+Accuracy: 0.371429
+
+Classification report:
+              precision    recall  f1-score   support
+
+  Level-walk       0.35      0.81      0.49      1510
+ Ramp-ascent       0.00      0.00      0.00      1115
+Ramp-descent       0.58      0.22      0.31      1777
+Stair-ascent       0.00      0.00      0.00         0
+        Stop       0.45      0.43      0.44       463
+
+    accuracy                           0.37      4865
+   macro avg       0.27      0.29      0.25      4865
+weighted avg       0.36      0.37      0.31      4865
+
+
+Labels order:
+Level-walk, Ramp-ascent, Ramp-descent, Stop
+
+混同行列（行=true, 列=pred）:
+1227	0	276	6
+1115	0	0	0
+941	215	383	238
+261	0	5	197
+
+上位特徴量（importance）:
+   rank  importance        feature
+1   0.044800   encoder_angle_max
+2   0.036431   encoder_angle_rms
+3   0.036115   encoder_angle_mean
+4   0.034163   encoder_angle_min
+5   0.027983   gyro_z_rms
+6   0.027845   gyro_z_min
+7   0.025679   quat_y_rms
+8   0.025126   quat_z_rms
+9   0.024082   grf_x_min
+10   0.023957   quat_w_rms
+11   0.023652   gyro_z_mean
+12   0.023208   grt_y_max
+13   0.022121   acc_z_rms
+14   0.021332   quat_x_rms
+15   0.020571   gyro_y_max
+16   0.020475   grf_y_max
+17   0.019329   gyro_z_max
+18   0.019163   grt_y_mean
+19   0.018577   gyro_y_rms
+20   0.018378   grt_y_min

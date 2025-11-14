@@ -1,0 +1,54 @@
+# Run summary
+hyperparams: n_estimators=50, max_depth=10, random_state=0
+window_ms=250, hop_ms=25, fs=200.0
+output_dir: models\multi_eval\ne50_md10_rs0_k-fold_fixed_fpcv
+
+PARAMS	n_estimators=50	max_depth=10	random_state=0
+WINDOW	250ms	HOP	25ms	fs	200.0
+FEATURES	30	encoder_angle_mean,quat_w_mean,grf_x_rms,grf_x_mean,grf_y_rms,acc_x_mean,acc_z_mean,gyro_x_mean,gyro_x_rms,gyro_y_rms,gyro_x_max,gyro_z_rms,quat_y_std,gyro_z_mean,acc_x_max,acc_x_min,acc_x_rms,quat_y_rms,grt_z_mean,grt_y_rms,grf_y_min,grt_x_min,grt_z_rms,grf_z_mean,gyro_y_mean,gyro_y_min,grf_y_std,grf_z_std,gyro_z_min,grf_x_std
+CVFOLD	kanoga	1	acc	0.750705
+CVFOLD	kanoga	1	macroF1	0.753016
+CVFOLD	kanoga	2	acc	0.731447
+CVFOLD	kanoga	2	macroF1	0.720350
+CVFOLD	kanoga	3	acc	0.441225
+CVFOLD	kanoga	3	macroF1	0.412590
+CVFOLD	kanoga	4	acc	0.805639
+CVFOLD	kanoga	4	macroF1	0.797308
+CVFOLD	kanoga	5	acc	0.773236
+CVFOLD	kanoga	5	macroF1	0.773557
+CVFOLD	kanoga	6	acc	0.827710
+CVFOLD	kanoga	6	macroF1	0.811404
+CVFOLD	kanoga	7	acc	0.815789
+CVFOLD	kanoga	7	macroF1	0.809165
+CVFOLD	kanoga	8	acc	0.709778
+CVFOLD	kanoga	8	macroF1	0.695131
+CVFOLD	kanoga	9	acc	0.776430
+CVFOLD	kanoga	9	macroF1	0.748596
+CVFOLD	kanoga	10	acc	0.842082
+CVFOLD	kanoga	10	macroF1	0.838722
+CVMEAN	kanoga	acc	0.747404
+CVMEAN	kanoga	macroF1	0.735984
+CVFOLD	kaneishi	1	acc	0.679683
+CVFOLD	kaneishi	1	macroF1	0.692155
+CVFOLD	kaneishi	2	acc	0.771675
+CVFOLD	kaneishi	2	macroF1	0.746539
+CVFOLD	kaneishi	3	acc	0.795264
+CVFOLD	kaneishi	3	macroF1	0.784770
+CVFOLD	kaneishi	4	acc	0.821088
+CVFOLD	kaneishi	4	macroF1	0.804671
+CVFOLD	kaneishi	5	acc	0.767843
+CVFOLD	kaneishi	5	macroF1	0.763391
+CVFOLD	kaneishi	6	acc	0.584797
+CVFOLD	kaneishi	6	macroF1	0.561046
+CVFOLD	kaneishi	7	acc	0.686897
+CVFOLD	kaneishi	7	macroF1	0.683383
+CVFOLD	kaneishi	8	acc	0.456381
+CVFOLD	kaneishi	8	macroF1	0.405781
+CVFOLD	kaneishi	9	acc	0.748765
+CVFOLD	kaneishi	9	macroF1	0.748889
+CVFOLD	kaneishi	10	acc	0.857319
+CVFOLD	kaneishi	10	macroF1	0.841284
+CVFOLD	kaneishi	11	acc	0.856156
+CVFOLD	kaneishi	11	macroF1	0.854874
+CVMEAN	kaneishi	acc	0.729624
+CVMEAN	kaneishi	macroF1	0.716980

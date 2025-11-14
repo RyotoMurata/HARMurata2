@@ -1,0 +1,24 @@
+[Ablation] Removed pattern: gyro_z_*
+特徴量（80列）: acc_x_mean, acc_x_std, acc_x_min, acc_x_max, acc_x_rms, acc_y_mean, acc_y_std, acc_y_min, acc_y_max, acc_y_rms, acc_z_mean, acc_z_std, acc_z_min, acc_z_max, acc_z_rms, gyro_x_mean, gyro_x_std, gyro_x_min, gyro_x_max, gyro_x_rms, gyro_y_mean, gyro_y_std, gyro_y_min, gyro_y_max, gyro_y_rms, quat_w_mean, quat_w_std, quat_w_min, quat_w_max, quat_w_rms, quat_x_mean, quat_x_std, quat_x_min, quat_x_max, quat_x_rms, quat_y_mean, quat_y_std, quat_y_min, quat_y_max, quat_y_rms, quat_z_mean, quat_z_std, quat_z_min, quat_z_max, quat_z_rms, encoder_angle_mean, encoder_angle_std, encoder_angle_min, encoder_angle_max, encoder_angle_rms, grf_x_mean, grf_x_std, grf_x_min, grf_x_max, grf_x_rms, grf_y_mean, grf_y_std, grf_y_min, grf_y_max, grf_y_rms, grf_z_mean, grf_z_std, grf_z_min, grf_z_max, grf_z_rms, grt_x_mean, grt_x_std, grt_x_min, grt_x_max, grt_x_rms, grt_y_mean, grt_y_std, grt_y_min, grt_y_max, grt_y_rms, grt_z_mean, grt_z_std, grt_z_min, grt_z_max, grt_z_rms
+Accuracy: 0.371125  (Δ vs baseline -0.026572)
+Macro-F1: 0.228787  (Δ vs baseline -0.025672)
+
+Classification report:
+               precision    recall  f1-score   support
+
+   Level-walk       0.30      0.77      0.43       281
+  Ramp-ascent       0.00      0.00      0.00         0
+ Stair-ascent       0.24      0.12      0.16       362
+Stair-descent       0.86      0.41      0.55       389
+         Stop       0.00      0.00      0.00        97
+
+     accuracy                           0.37      1129
+    macro avg       0.28      0.26      0.23      1129
+ weighted avg       0.45      0.37      0.35      1129
+
+
+混同行列（行=true, 列=pred）:
+215	33	8	12
+296	45	18	3
+184	46	159	0
+32	65	0	0

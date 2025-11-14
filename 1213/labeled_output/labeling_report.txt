@@ -1,0 +1,14 @@
+Labeling Report
+================
+Total samples: 158090
+Labeled samples: 9556
+Coverage: 6.04%
+
+Class distribution (samples)
+  unknown: 148534
+  stair_down: 5032
+  stair_up: 4524
+
+Warnings/Notes
+  Short segments removed: 0
+  Overlaps detected (last-wins): 0

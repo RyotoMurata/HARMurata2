@@ -1,0 +1,38 @@
+Subject: kanoga
+Fold: 7/10
+Train sets: 0001, 0002, 0003, 0004, 0005, 0006, 0008, 0009, 0010
+Test set: 0007
+Model size: 3390873 B
+Hyper params: n_estimators=50, max_depth=10, max_features=8, min_samples_leaf=2, min_samples_split=4, ccp_alpha=0.0001, max_leaf_nodes=512, bootstrap=True, max_samples=0.8, class_weight=balanced_subsample, criterion=gini, random_state=0
+Model complexity: total_nodes=30118, max_tree_depth=10
+Window: 250 ms, Hop: 25 ms, fs: 200.0 Hz
+Features (30): encoder_angle_mean, quat_w_mean, grf_x_rms, grf_x_mean, grf_y_rms, acc_x_mean, acc_z_mean, gyro_x_mean, gyro_x_rms, gyro_y_rms, gyro_x_max, gyro_z_rms, quat_y_std, gyro_z_mean, acc_x_max, acc_x_min, acc_x_rms, quat_y_rms, grt_z_mean, grt_y_rms, grf_y_min, grt_x_min, grt_z_rms, grf_z_mean, gyro_y_mean, gyro_y_min, grf_y_std, grf_z_std, gyro_z_min, grf_x_std
+
+Accuracy: 0.815789
+Macro-F1: 0.809165
+
+Classification report:
+               precision    recall  f1-score   support
+
+   Level-walk       0.72      0.74      0.73       603
+  Ramp-ascent       0.76      0.77      0.76       224
+ Ramp-descent       0.79      0.79      0.79       307
+ Stair-ascent       0.91      0.95      0.93       416
+Stair-descent       0.88      0.92      0.90       526
+         Stop       0.83      0.68      0.75       318
+
+     accuracy                           0.82      2394
+    macro avg       0.81      0.81      0.81      2394
+ weighted avg       0.82      0.82      0.81      2394
+
+
+Labels order:
+Level-walk, Ramp-ascent, Ramp-descent, Stair-ascent, Stair-descent, Stop
+
+Confusion matrix (row=true, col=pred):
+445	37	30	34	30	27
+45	172	7	0	0	0
+37	11	241	0	18	0
+4	0	0	395	5	12
+30	0	3	4	483	6
+56	7	26	2	10	217

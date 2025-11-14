@@ -1,0 +1,17 @@
+{
+  "generated_at": "2025-09-06T14:20:19.647384",
+  "segments": 4,
+  "total_rows": 158090,
+  "counts": {
+    "unknown": 148534,
+    "stair_up": 4524,
+    "stair_down": 5032
+  },
+  "inputs": {
+    "data_dir": "1213"
+  },
+  "notes": {
+    "short_segments_removed": 0,
+    "overlaps": 0
+  }
+}

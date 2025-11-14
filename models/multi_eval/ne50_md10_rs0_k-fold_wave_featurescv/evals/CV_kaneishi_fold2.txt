@@ -1,0 +1,37 @@
+Subject: kaneishi
+Fold: 2/6
+Train sets: 0001, 0003, 0004, 0005, 0006
+Test set: 0002
+Model size: 3349523 B
+Hyperparams: n_estimators=50, max_depth=10, random_state=0
+Window: 250 ms, Hop: 25 ms, fs: 200.0 Hz
+Features (85): acc_x_mean, acc_x_std, acc_x_rms, acc_x_ssc, acc_x_abs_sum, acc_y_mean, acc_y_std, acc_y_rms, acc_y_ssc, acc_y_abs_sum, acc_z_mean, acc_z_std, acc_z_rms, acc_z_ssc, acc_z_abs_sum, gyro_x_mean, gyro_x_std, gyro_x_rms, gyro_x_ssc, gyro_x_abs_sum, gyro_y_mean, gyro_y_std, gyro_y_rms, gyro_y_ssc, gyro_y_abs_sum, gyro_z_mean, gyro_z_std, gyro_z_rms, gyro_z_ssc, gyro_z_abs_sum, quat_w_mean, quat_w_std, quat_w_rms, quat_w_ssc, quat_w_abs_sum, quat_x_mean, quat_x_std, quat_x_rms, quat_x_ssc, quat_x_abs_sum, quat_y_mean, quat_y_std, quat_y_rms, quat_y_ssc, quat_y_abs_sum, quat_z_mean, quat_z_std, quat_z_rms, quat_z_ssc, quat_z_abs_sum, encoder_angle_mean, encoder_angle_std, encoder_angle_rms, encoder_angle_ssc, encoder_angle_abs_sum, grf_x_mean, grf_x_std, grf_x_rms, grf_x_ssc, grf_x_abs_sum, grf_y_mean, grf_y_std, grf_y_rms, grf_y_ssc, grf_y_abs_sum, grf_z_mean, grf_z_std, grf_z_rms, grf_z_ssc, grf_z_abs_sum, grt_x_mean, grt_x_std, grt_x_rms, grt_x_ssc, grt_x_abs_sum, grt_y_mean, grt_y_std, grt_y_rms, grt_y_ssc, grt_y_abs_sum, grt_z_mean, grt_z_std, grt_z_rms, grt_z_ssc, grt_z_abs_sum
+
+Accuracy: 0.670067
+Macro-F1: 0.585236
+
+Classification report:
+               precision    recall  f1-score   support
+
+   Level-walk       0.85      0.57      0.68       737
+  Ramp-ascent       0.00      0.00      0.00       295
+ Ramp-descent       0.29      0.88      0.44       265
+ Stair-ascent       0.81      0.92      0.86       443
+Stair-descent       0.95      0.98      0.97       539
+         Stop       0.85      0.41      0.56       270
+
+     accuracy                           0.67      2549
+    macro avg       0.63      0.63      0.59      2549
+ weighted avg       0.71      0.67      0.66      2549
+
+
+Labels order:
+Level-walk, Ramp-ascent, Ramp-descent, Stair-ascent, Stair-descent, Stop
+
+Confusion matrix (row=true, col=pred):
+423	59	172	75	4	4
+5	0	290	0	0	0
+31	0	234	0	0	0
+18	0	0	409	1	15
+1	0	0	8	530	0
+21	0	98	16	23	112

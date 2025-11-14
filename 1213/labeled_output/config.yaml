@@ -1,0 +1,17 @@
+time_basis: absolute
+offset_ms: 0
+snap_tolerance_ms: 5
+transition_margin_ms: 200
+min_duration_ms: 150
+include_transition: false
+exclude_unknown_in_labeled_only: true
+label_normalization:
+  stair ascent: stair_up
+  upstair: stair_up
+  upstairs: stair_up
+  stair_up: stair_up
+  stair descent: stair_down
+  downstair: stair_down
+  downstairs: stair_down
+  stair_down: stair_down
+priority: []

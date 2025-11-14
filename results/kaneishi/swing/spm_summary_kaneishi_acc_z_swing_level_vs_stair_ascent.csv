@@ -1,0 +1,4 @@
+subject,channel,phase,n_clusters,cluster_id,start_pct,end_pct,peak_t,p_corrected,dz_mean_in_cluster,T,alpha,h0reject
+kaneishi,acc_z,swing,3,1,1.0,26.0,18.410330961705917,0.0,3.736926548702791,101,0.05,True
+kaneishi,acc_z,swing,3,2,38.0,50.0,8.712120266441698,1.4741541320972829e-12,-2.059651601691698,101,0.05,True
+kaneishi,acc_z,swing,3,3,68.0,79.0,5.728002968905289,4.120707108867805e-09,1.5563024902668727,101,0.05,True

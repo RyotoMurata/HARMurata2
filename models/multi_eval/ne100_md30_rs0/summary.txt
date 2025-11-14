@@ -1,0 +1,20 @@
+# Run summary
+hyperparams: n_estimators=100, max_depth=30, random_state=0
+output_dir: models\multi_eval\ne100_md30_rs0
+
+PARAMS	n_estimators=100	max_depth=30	random_state=0
+MODEL rf_dataset_kanoga_all	size	25694526
+EVAL rf_dataset_kanoga_all	ramp_t6_kanoga_set-0006	acc	0.824757
+EVAL rf_dataset_kanoga_all	ramp_t6_kaneishi_set-0006	acc	0.279137
+EVAL rf_dataset_kanoga_all	stair_t8_kanoga_set-0006	acc	0.844110
+EVAL rf_dataset_kanoga_all	stair_t6_kaneishi_set-0006	acc	0.306966
+MODEL rf_dataset_kaneishi_all	size	20252222
+EVAL rf_dataset_kaneishi_all	ramp_t6_kanoga_set-0006	acc	0.351878
+EVAL rf_dataset_kaneishi_all	ramp_t6_kaneishi_set-0006	acc	0.375745
+EVAL rf_dataset_kaneishi_all	stair_t8_kanoga_set-0006	acc	0.414526
+EVAL rf_dataset_kaneishi_all	stair_t6_kaneishi_set-0006	acc	0.916175
+MODEL ALL	size	60366366
+EVAL ALL	ramp_t6_kanoga_set-0006	acc	0.780250
+EVAL ALL	ramp_t6_kaneishi_set-0006	acc	0.383145
+EVAL ALL	stair_t8_kanoga_set-0006	acc	0.869796
+EVAL ALL	stair_t6_kaneishi_set-0006	acc	0.907910

@@ -1,0 +1,2 @@
+subject,channel,phase,n_clusters,cluster_id,start_pct,end_pct,peak_t,p_corrected,dz_mean_in_cluster,T,alpha,h0reject,mean_abs_dz
+kaneishi,encoder_angle,swing,1,1,0.0,62.0,58.21321309799835,0.0,-9.85462422795853,101,0.05,True,6.369252560867076

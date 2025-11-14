@@ -1,0 +1,159 @@
+    out: List[Path] = []
+    for s in paths:
+        if any(ch in s for ch in "*?[]"):
+            out.extend(Path().glob(s))
+        else:
+            out.append(Path(s))
+    # unique, keep order
+    uniq: List[Path] = []
+    seen = set()
+    for p in out:
+        try:
+            real = p.resolve()
+        except Exception:
+            continue
+        if not p.is_file() or real in seen:
+            continue
+        seen.add(real)
+        uniq.append(p)
+    return uniq
+
+
+def main() -> None:
+    # Declare globals before any reference inside this function
+    global N_ESTIMATORS, MAX_DEPTH, MIN_SAMPLES_SPLIT, MIN_SAMPLES_LEAF, MAX_FEATURES
+    global CLASS_WEIGHT, CV_SPLITS, CV_SHUFFLE, RANDOM_STATE, N_JOBS, VERBOSE
+
+    p = argparse.ArgumentParser(description="Train RandomForest on CSV; optional external evaluation on set-labeled text files.")
+    p.add_argument("--csv", type=Path, default=CSV_PATH, help="Input CSV path")
+    p.add_argument(
+        "--stats",
+        type=str,
+        default=",".join(SELECTED_STATS),
+        help="Comma-separated stat types to use (max 5), e.g., mean,std,iqr,rms,kurtosis",
+    )
+    p.add_argument("--n-estimators", type=int, default=N_ESTIMATORS)
+    p.add_argument("--max-depth", type=int, default=-1, help="Use -1 for None")
+    p.add_argument("--min-samples-split", type=int, default=MIN_SAMPLES_SPLIT)
+    p.add_argument("--min-samples-leaf", type=int, default=MIN_SAMPLES_LEAF)
+    p.add_argument(
+        "--max-features",
+        type=str,
+        default=str(MAX_FEATURES),
+        help='e.g., "sqrt", "log2", or a fraction like 0.5',
+    )
+    p.add_argument("--class-weight", type=str, default=str(CLASS_WEIGHT) if CLASS_WEIGHT is not None else "")
+    p.add_argument("--cv-splits", type=int, default=CV_SPLITS, help="Number of StratifiedKFold splits")
+    p.add_argument("--cv-shuffle", type=int, default=int(CV_SHUFFLE), help="Shuffle before split (1=yes,0=no)")
+    p.add_argument("--random-state", type=int, default=RANDOM_STATE)
+    p.add_argument("--n-jobs", type=int, default=N_JOBS)
+    p.add_argument("--verbose", type=int, default=VERBOSE)
+    # external eval options
+    p.add_argument("--eval-files", type=Path, nargs="*", help="Set-labeled *_set-*.txt files for external evaluation")
+    p.add_argument("--eval-input-dir", type=Path, default=Path("Labelled_data"))
+    p.add_argument("--eval-glob", type=str, default="*_set-*.txt")
+    p.add_argument("--window-ms", type=int, default=1000)
+    p.add_argument("--hop-ms", type=int, default=100)
+    args = p.parse_args()
+
+    # Apply CLI overrides to globals (for simplicity)
+    N_ESTIMATORS = int(args.n_estimators)
+    MAX_DEPTH = None if int(args.max_depth) == -1 else int(args.max_depth)
+    MIN_SAMPLES_SPLIT = int(args.min_samples_split)
+    MIN_SAMPLES_LEAF = int(args.min_samples_leaf)
+    # Parse max_features which can be float, int, or string
+    mf = args.max_features.strip()
+    if mf.lower() in {"sqrt", "log2", "none"}:
+        MAX_FEATURES = None if mf.lower() == "none" else mf.lower()
+    else:
+        try:
+            if "." in mf:
+                MAX_FEATURES = float(mf)
+            else:
+                MAX_FEATURES = int(mf)
+        except ValueError:
+            MAX_FEATURES = "sqrt"
+    cw = args.class_weight.strip()
+    CLASS_WEIGHT = None if cw == "" or cw.lower() == "none" else cw
+    CV_SPLITS = int(args.cv_splits)
+    CV_SHUFFLE = bool(int(args.cv_shuffle))
+    RANDOM_STATE = int(args.random_state)
+    N_JOBS = int(args.n_jobs)
+    VERBOSE = int(args.verbose)
+
+    stats = [s.strip() for s in args.stats.split(",") if s.strip()]
+    if not stats:
+        raise SystemExit("--stats must contain at least one name")
+    if len(stats) > 5:
+        print("Note: more than 5 stats provided; using first 5.")
+        stats = stats[:5]
+
+    X, y, feat_cols = load_dataset(args.csv, stats)
+
+    # If external eval is specified, train on full CSV then evaluate
+    eval_files: List[Path] = []
+    if args.eval_files:
+        from glob import glob as _glob
+
+        # Expand potential wildcards for each provided path
+        for p in args.eval_files:
+            s = str(p)
+            matches = list(Path().glob(s)) if any(ch in s for ch in "*?[]") else [Path(s)]
+            for m in matches:
+                if m.is_file():
+                    eval_files.append(m)
+    elif DEFAULT_EVAL_PATHS:
+        eval_files = _expand_paths_from_strings(DEFAULT_EVAL_PATHS)
+    else:
+        # Fallback: use directory+glob (useful to quickly point to a folder)
+        eval_files = sorted(p for p in args.eval_input_dir.glob(args.eval_glob) if p.is_file())
+
+    if eval_files:
+        print(f"[2/4] Training on full CSV ({X.shape[0]} rows, {X.shape[1]} features)…")
+        rf = RandomForestClassifier(
+            n_estimators=N_ESTIMATORS,
+            max_depth=MAX_DEPTH,
+            min_samples_split=MIN_SAMPLES_SPLIT,
+            min_samples_leaf=MIN_SAMPLES_LEAF,
+            max_features=MAX_FEATURES,
+            class_weight=CLASS_WEIGHT,
+            n_jobs=N_JOBS,
+            random_state=RANDOM_STATE,
+            verbose=VERBOSE,
+        )
+        rf.fit(X, y)
+
+        print("[3/4] Building evaluation windows from external files …")
+        window_sec = float(args.window_ms) / 1000.0
+        hop_sec = float(args.hop_ms) / 1000.0
+        X_eval, y_eval = build_eval_matrix(eval_files, stats, window_sec, hop_sec)
+        if X_eval.shape[0] == 0:
+            print("No evaluable windows found in external files.")
+            return
+        print(f"       Eval windows: {X_eval.shape[0]} (features={X_eval.shape[1]})")
+
+        # Align feature columns order by selecting the same headers order
+        expected_headers = feat_cols
+        current_headers = feature_headers_for(stats)
+        # current_headers and feat_cols should match by construction
+        if len(current_headers) != len(expected_headers):
+            print("Warning: feature header length mismatch between train and eval.")
+        y_pred = rf.predict(X_eval)
+        print("[4/4] External evaluation results:")
+        acc = accuracy_score(y_eval, y_pred)
+        print(f"Accuracy: {acc:.4f}")
+        labels_unique = list(np.unique(np.concatenate([y_eval, y_pred])))
+        print("\nClassification report:\n" + classification_report(y_eval, y_pred, labels=labels_unique))
+        cm = confusion_matrix(y_eval, y_pred, labels=labels_unique)
+        print("Confusion matrix (rows=true, cols=pred):")
+        header = "      " + " ".join(f"{lbl:>15s}" for lbl in labels_unique)
+        print(header)
+        for i, row in enumerate(cm):
+            print(f"{labels_unique[i]:>6s} " + " ".join(f"{v:15d}" for v in row))
+    else:
+        # No external eval files; run CV as before
+        cross_validate_and_report(X, y, feat_cols)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,68 @@
+# Run summary
+hyperparams: n_estimators=100, max_depth=10, random_state=0
+output_dir: models\multi_eval\ne100_md10_rs0_permutation
+
+PARAMS	n_estimators=100	max_depth=10	random_state=0
+MODEL rf_dataset_kanoga_all	size	5382577
+EVAL rf_dataset_kanoga_all	ramp_t6_kanoga_set-0006	acc	0.808067
+EVAL rf_dataset_kanoga_all	ramp_t6_kanoga_set-0006	macroF1	0.789125
+EVAL rf_dataset_kanoga_all	ramp_t6_kaneishi_set-0006	acc	0.269887
+EVAL rf_dataset_kanoga_all	ramp_t6_kaneishi_set-0006	macroF1	0.085332
+EVAL rf_dataset_kanoga_all	stair_t8_kanoga_set-0006	acc	0.849424
+EVAL rf_dataset_kanoga_all	stair_t8_kanoga_set-0006	macroF1	0.826142
+EVAL rf_dataset_kanoga_all	stair_t6_kaneishi_set-0006	acc	0.361275
+EVAL rf_dataset_kanoga_all	stair_t6_kaneishi_set-0006	macroF1	0.332744
+
+# Permutation Importance Ranking (rf_dataset_kanoga_all)
+RANK 01	rf_dataset_kanoga_all	quat_x_rms	meanΔMacroF1	-0.052031
+RANK 02	rf_dataset_kanoga_all	acc_x_rms	meanΔMacroF1	-0.048861
+RANK 03	rf_dataset_kanoga_all	encoder_angle_min	meanΔMacroF1	-0.048574
+RANK 04	rf_dataset_kanoga_all	gyro_z_max	meanΔMacroF1	-0.048094
+RANK 05	rf_dataset_kanoga_all	quat_z_std	meanΔMacroF1	-0.045396
+RANK 06	rf_dataset_kanoga_all	encoder_angle_rms	meanΔMacroF1	-0.044712
+RANK 07	rf_dataset_kanoga_all	gyro_z_rms	meanΔMacroF1	-0.043337
+RANK 08	rf_dataset_kanoga_all	quat_x_std	meanΔMacroF1	-0.042789
+RANK 09	rf_dataset_kanoga_all	gyro_z_std	meanΔMacroF1	-0.042600
+RANK 10	rf_dataset_kanoga_all	gyro_z_min	meanΔMacroF1	-0.042562
+MODEL rf_dataset_kaneishi_all	size	5952012
+EVAL rf_dataset_kaneishi_all	ramp_t6_kanoga_set-0006	acc	0.361613
+EVAL rf_dataset_kaneishi_all	ramp_t6_kanoga_set-0006	macroF1	0.207498
+EVAL rf_dataset_kaneishi_all	ramp_t6_kaneishi_set-0006	acc	0.371429
+EVAL rf_dataset_kaneishi_all	ramp_t6_kaneishi_set-0006	macroF1	0.247041
+EVAL rf_dataset_kaneishi_all	stair_t8_kanoga_set-0006	acc	0.397697
+EVAL rf_dataset_kaneishi_all	stair_t8_kanoga_set-0006	macroF1	0.254459
+EVAL rf_dataset_kaneishi_all	stair_t6_kaneishi_set-0006	acc	0.917355
+EVAL rf_dataset_kaneishi_all	stair_t6_kaneishi_set-0006	macroF1	0.862840
+
+# Permutation Importance Ranking (rf_dataset_kaneishi_all)
+RANK 01	rf_dataset_kaneishi_all	grt_y_mean	meanΔMacroF1	-0.057063
+RANK 02	rf_dataset_kaneishi_all	grf_y_rms	meanΔMacroF1	-0.054364
+RANK 03	rf_dataset_kaneishi_all	acc_z_rms	meanΔMacroF1	-0.016241
+RANK 04	rf_dataset_kaneishi_all	encoder_angle_rms	meanΔMacroF1	-0.016194
+RANK 05	rf_dataset_kaneishi_all	gyro_z_std	meanΔMacroF1	-0.015094
+RANK 06	rf_dataset_kaneishi_all	acc_z_std	meanΔMacroF1	-0.012711
+RANK 07	rf_dataset_kaneishi_all	gyro_y_rms	meanΔMacroF1	-0.011565
+RANK 08	rf_dataset_kaneishi_all	grt_y_std	meanΔMacroF1	-0.010212
+RANK 09	rf_dataset_kaneishi_all	acc_z_max	meanΔMacroF1	-0.009123
+RANK 10	rf_dataset_kaneishi_all	encoder_angle_max	meanΔMacroF1	-0.008927
+MODEL ALL	size	7862509
+EVAL ALL	ramp_t6_kanoga_set-0006	acc	0.705146
+EVAL ALL	ramp_t6_kanoga_set-0006	macroF1	0.483337
+EVAL ALL	ramp_t6_kaneishi_set-0006	acc	0.366290
+EVAL ALL	ramp_t6_kaneishi_set-0006	macroF1	0.211784
+EVAL ALL	stair_t8_kanoga_set-0006	acc	0.862710
+EVAL ALL	stair_t8_kanoga_set-0006	macroF1	0.813606
+EVAL ALL	stair_t6_kaneishi_set-0006	acc	0.896104
+EVAL ALL	stair_t6_kaneishi_set-0006	macroF1	0.671650
+
+# Permutation Importance Ranking (ALL)
+RANK 01	ALL	encoder_angle_min	meanΔMacroF1	-0.044790
+RANK 02	ALL	grt_y_min	meanΔMacroF1	-0.031150
+RANK 03	ALL	acc_z_min	meanΔMacroF1	-0.030044
+RANK 04	ALL	grt_x_rms	meanΔMacroF1	-0.029736
+RANK 05	ALL	grt_y_mean	meanΔMacroF1	-0.028968
+RANK 06	ALL	acc_x_rms	meanΔMacroF1	-0.028644
+RANK 07	ALL	quat_x_max	meanΔMacroF1	-0.028633
+RANK 08	ALL	quat_x_std	meanΔMacroF1	-0.028129
+RANK 09	ALL	grf_y_mean	meanΔMacroF1	-0.027753
+RANK 10	ALL	encoder_angle_max	meanΔMacroF1	-0.027559

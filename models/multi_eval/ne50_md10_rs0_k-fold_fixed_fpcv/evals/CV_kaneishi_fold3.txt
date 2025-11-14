@@ -1,0 +1,38 @@
+Subject: kaneishi
+Fold: 3/11
+Train sets: 0001, 0002, 0004, 0005, 0006, 0007, 0008, 0009, 0010, 0011
+Test set: 0003
+Model size: 3728477 B
+Hyper params: n_estimators=50, max_depth=10, max_features=8, min_samples_leaf=2, min_samples_split=4, ccp_alpha=0.0001, max_leaf_nodes=512, bootstrap=True, max_samples=0.8, class_weight=balanced_subsample, criterion=gini, random_state=0
+Model complexity: total_nodes=33132, max_tree_depth=10
+Window: 250 ms, Hop: 25 ms, fs: 200.0 Hz
+Features (30): encoder_angle_mean, quat_w_mean, grf_x_rms, grf_x_mean, grf_y_rms, acc_x_mean, acc_z_mean, gyro_x_mean, gyro_x_rms, gyro_y_rms, gyro_x_max, gyro_z_rms, quat_y_std, gyro_z_mean, acc_x_max, acc_x_min, acc_x_rms, quat_y_rms, grt_z_mean, grt_y_rms, grf_y_min, grt_x_min, grt_z_rms, grf_z_mean, gyro_y_mean, gyro_y_min, grf_y_std, grf_z_std, gyro_z_min, grf_x_std
+
+Accuracy: 0.795264
+Macro-F1: 0.784770
+
+Classification report:
+               precision    recall  f1-score   support
+
+   Level-walk       0.78      0.77      0.78       713
+  Ramp-ascent       0.89      0.63      0.74       313
+ Ramp-descent       0.95      0.93      0.94       303
+ Stair-ascent       0.84      0.83      0.83       492
+Stair-descent       0.80      1.00      0.89       477
+         Stop       0.54      0.52      0.53       320
+
+     accuracy                           0.80      2618
+    macro avg       0.80      0.78      0.78      2618
+ weighted avg       0.80      0.80      0.79      2618
+
+
+Labels order:
+Level-walk, Ramp-ascent, Ramp-descent, Stair-ascent, Stair-descent, Stop
+
+Confusion matrix (row=true, col=pred):
+551	4	0	56	56	46
+50	198	0	2	2	61
+3	0	283	0	14	3
+6	0	14	406	31	35
+0	0	0	0	477	0
+95	20	0	18	20	167

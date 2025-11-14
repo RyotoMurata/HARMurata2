@@ -1,0 +1,17 @@
+subject,phase,channel,condA,condB,has_significance,n_sig_clusters,best_p_corrected,max_abs_t,total_sig_span_pct,max_abs_dz_mean_in_clusters
+kaneishi,stance,grf_z,level,stair_ascent,True,3,0.0,27.36417722305146,80.0,4.64219099669866
+kaneishi,stance,grt_x,level,stair_ascent,True,3,0.0,18.040730485424287,71.0,3.4216153148482746
+kaneishi,stance,gyro_z,level,stair_ascent,True,3,0.0,23.81164483665742,70.0,3.9852353590014977
+kaneishi,stance,grt_z,level,stair_ascent,True,2,0.0,10.278687377324248,54.0,2.1027904942621665
+kaneishi,stance,grt_y,level,stair_ascent,True,2,2.220446049250313e-16,23.321087631434054,43.0,3.8755472807313294
+kaneishi,stance,gyro_y,level,stair_ascent,True,4,0.0,18.95519483870169,39.0,4.237616376621757
+kaneishi,stance,grf_x,level,stair_ascent,True,4,0.0,10.545193595671188,38.0,2.3492015611836186
+kaneishi,stance,grf_y,level,stair_ascent,True,6,1.1761702722878908e-12,16.344332078587374,31.0,2.9958774022631744
+kaneishi,stance,acc_z,level,stair_ascent,True,5,0.0,20.496607354932138,14.0,4.248432175663209
+kaneishi,stance,gyro_x,level,stair_ascent,True,4,8.245921945260193e-09,9.333504206578258,14.0,2.3196258870742277
+kaneishi,stance,acc_x,level,stair_ascent,False,0,1.0,0.0,0.0,
+kaneishi,stance,acc_y,level,stair_ascent,False,0,1.0,0.0,0.0,
+kaneishi,stance,quat_w,level,stair_ascent,False,0,1.0,0.0,0.0,
+kaneishi,stance,quat_x,level,stair_ascent,False,0,1.0,0.0,0.0,
+kaneishi,stance,quat_y,level,stair_ascent,False,0,1.0,0.0,0.0,
+kaneishi,stance,quat_z,level,stair_ascent,False,0,1.0,0.0,0.0,

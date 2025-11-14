@@ -1,0 +1,92 @@
+        # end index: t <= current + window_sec
+        wend = current + window_sec + 1e-12
+        i1 = i0
+        while i1 < n and t[i1] <= wend:
+            i1 += 1
+        if i1 - i0 >= 2:  # 譛菴・繧ｵ繝ｳ繝励Ν
+            starts.append(i0)
+            ends.append(i1 - 1)
+        current += hop_sec
+    return list(zip(starts, ends))
+
+
+def compute_features(series: LabeledSeries, stat_names: Sequence[str], window_sec: float, hop_sec: float) -> Tuple[List[str], np.ndarray]:
+    # 讀懆ｨｼ: 邨ｱ險磯㍼蜷・    for name in stat_names:
+        if name not in STAT_FUNCS:
+            raise SystemExit(f"Unknown stat: {name}. Available: {', '.join(sorted(STAT_FUNCS))}")
+
+    idx_pairs = sliding_windows(series.t_s, window_sec, hop_sec)
+    if not idx_pairs:
+        raise SystemExit("No windows generated. Check window/hop sizes and input length.")
+
+    # 繝倥ャ繝・亥・蜷搾ｼ我ｽ懈・
+    headers: List[str] = ["t_start_s", "t_end_s"]
+    for ch in FEATURE_NAMES:
+        for st in stat_names:
+            headers.append(f"{ch}_{st}")
+    # 繝ｩ繝吶Ν蛻暦ｼ亥ｭ伜惠縺吶ｋ蝣ｴ蜷茨ｼ・    label_exists = series.label is not None
+    if label_exists:
+        headers.append("label")
+
+    out: List[List[float]] = []
+    for (a, b) in idx_pairs:
+        t_sub = series.t_s[a : b + 1]
+        row: List[float] = [float(t_sub[0]), float(t_sub[-1])]
+        for col in range(series.data.shape[1]):
+            x = series.data[a : b + 1, col]
+            for st in stat_names:
+                val = STAT_FUNCS[st](x, t_sub)
+                row.append(float(val))
+        if label_exists:
+            # 蜷御ｸ繝輔ぃ繧､繝ｫ縺九ｉ縺ｮ繧ｦ繧｣繝ｳ繝峨え縺ｧ縺ゅｌ縺ｰ蜷御ｸ繝ｩ繝吶Ν諠ｳ螳・            # 譁・ｭ怜・蛻励・蠕後〒蛻･譫縺ｧ謇ｱ縺・◆繧・placeholder 繧剃ｽｿ繧上★縲√％縺薙〒縺ｯ霑ｽ蜉繧偵せ繧ｭ繝・・縺・            # 蛻･驟榊・縺ｫ譁・ｭ怜・縺ｨ縺励※謖√▽縺薙→繧ゅ〒縺阪ｋ縺後∫ｰ｡萓ｿ縺ｮ縺溘ａ譛蠕後↓譁・ｭ怜・邨仙粋縺ｧ蜃ｺ蜉・            pass
+        out.append(row)
+
+    out_arr = np.asarray(out, dtype=float)
+    return headers, out_arr
+
+
+def save_features(headers: List[str], values: np.ndarray, dst: Path, label: Optional[str] = None) -> None:
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    # 繝・く繧ｹ繝茨ｼ・SV・峨→縺励※菫晏ｭ倥よ忰蟆ｾ縺ｫ繝ｩ繝吶Ν蛻励′蠢・ｦ√↑繧我ｻ倅ｸ弱・    with dst.open("w", encoding="utf-8", newline="") as f:
+        # 繝倥ャ繝繝ｼ
+        f.write(",".join(headers) + "\n")
+        for i in range(values.shape[0]):
+            row = ",".join(f"{v:.10g}" for v in values[i])
+            if label is not None:
+                row = row + "," + f'"{label}"'
+            f.write(row + "\n")
+
+
+def main():
+    p = argparse.ArgumentParser(description="Labelled_data 縺ｮ1繝輔ぃ繧､繝ｫ縺九ｉ繧ｹ繝ｩ繧､繝・ぅ繝ｳ繧ｰ繧ｦ繧｣繝ｳ繝峨え迚ｹ蠕ｴ驥上ｒ險育ｮ・)
+    p.add_argument("input", type=Path, nargs="?", default=DEFAULT_INPUT, help="蜈･蜉帙ヵ繧｡繧､繝ｫ (譌｢螳・ DEFAULT_INPUT)")
+    p.add_argument("--window-ms", type=int, default=DEFAULT_WINDOW_MS, help="繧ｦ繧｣繝ｳ繝峨え髟ｷ [ms]")
+    p.add_argument("--hop-ms", type=int, default=DEFAULT_HOP_MS, help="繝帙ャ繝鈴聞 [ms]")
+    p.add_argument(
+        "--stats",
+        type=str,
+        default=",".join(DEFAULT_STATS),
+        help="繧ｫ繝ｳ繝槫玄蛻・ｊ縺ｮ邨ｱ險磯㍼蜷・(萓・ mean,std,iqr,rms). 蛻ｩ逕ｨ蜿ｯ閭ｽ: "
+        + ", ".join(sorted(STAT_FUNCS.keys())),
+    )
+    p.add_argument("--outdir", type=Path, default=DEFAULT_OUTPUT_DIR, help="蜃ｺ蜉帙ョ繧｣繝ｬ繧ｯ繝医Μ (None 縺ｧ蜈･蜉帙→蜷後§)")
+    args = p.parse_args()
+
+    in_path: Path = args.input
+    series = load_labeled_series(in_path)
+
+    stat_names = [s.strip() for s in args.stats.split(",") if s.strip()]
+    window_sec = float(args.window_ms) / 1000.0
+    hop_sec = float(args.hop_ms) / 1000.0
+    headers, values = compute_features(series, stat_names, window_sec, hop_sec)
+
+    out_dir = args.outdir if args.outdir is not None else in_path.parent
+    # 蜃ｺ蜉帙ヵ繧｡繧､繝ｫ蜷阪↓繧ｦ繧｣繝ｳ繝峨え/繝帙ャ繝鈴聞[ms]繧貞性繧√ｋ
+    out_name = f"{in_path.stem}+Featured_w{int(args.window_ms)}ms_h{int(args.hop_ms)}ms.txt"
+    out_path = out_dir / out_name
+    save_features(headers, values, out_path, label=series.label)
+    print(f"Saved: {out_path}")
+
+
+if __name__ == "__main__":
+    main()

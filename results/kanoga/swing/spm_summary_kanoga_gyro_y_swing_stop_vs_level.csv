@@ -1,0 +1,2 @@
+subject,channel,phase,n_clusters,cluster_id,start_pct,end_pct,peak_t,p_corrected,dz_mean_in_cluster,T,alpha,h0reject,mean_abs_dz
+kanoga,gyro_y,swing,1,1,30.0,30.0,8.344235403726248,0.046828313298856505,3.7316555165986443,101,0.05,True,1.2789360606797109

@@ -1,0 +1,1 @@
+                    f.write("\n上位特徴量！Emportance�E�E\n")

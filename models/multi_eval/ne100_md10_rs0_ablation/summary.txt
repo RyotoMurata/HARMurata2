@@ -1,0 +1,236 @@
+# Run summary
+hyperparams: n_estimators=100, max_depth=10, random_state=0
+output_dir: models\multi_eval\ne100_md10_rs0_ablation
+
+PARAMS	n_estimators=100	max_depth=10	random_state=0
+MODEL rf_dataset_kanoga_all	size	5382577
+EVAL rf_dataset_kanoga_all	ramp_t6_kanoga_set-0006	acc	0.808067
+EVAL rf_dataset_kanoga_all	ramp_t6_kanoga_set-0006	macroF1	0.789125
+EVAL rf_dataset_kanoga_all	ramp_t6_kaneishi_set-0006	acc	0.269887
+EVAL rf_dataset_kanoga_all	ramp_t6_kaneishi_set-0006	macroF1	0.085332
+EVAL rf_dataset_kanoga_all	stair_t8_kanoga_set-0006	acc	0.849424
+EVAL rf_dataset_kanoga_all	stair_t8_kanoga_set-0006	macroF1	0.826142
+EVAL rf_dataset_kanoga_all	stair_t6_kaneishi_set-0006	acc	0.361275
+EVAL rf_dataset_kanoga_all	stair_t6_kaneishi_set-0006	macroF1	0.332744
+ABLATE rf_dataset_kanoga_all	acc_x_*	ramp_t6_kanoga_set-0006	acc=0.796940	macroF1=0.776856	dAcc=-0.011127	dF1=-0.012269
+ABLATE rf_dataset_kanoga_all	acc_x_*	ramp_t6_kaneishi_set-0006	acc=0.278726	macroF1=0.090052	dAcc=+0.008839	dF1=+0.004721
+ABLATE rf_dataset_kanoga_all	acc_x_*	stair_t8_kanoga_set-0006	acc=0.869796	macroF1=0.846109	dAcc=+0.020372	dF1=+0.019968
+ABLATE rf_dataset_kanoga_all	acc_x_*	stair_t6_kaneishi_set-0006	acc=0.371901	macroF1=0.367179	dAcc=+0.010626	dF1=+0.034435
+ABLATE rf_dataset_kanoga_all	acc_y_*	ramp_t6_kanoga_set-0006	acc=0.808067	macroF1=0.793348	dAcc=+0.000000	dF1=+0.004223
+ABLATE rf_dataset_kanoga_all	acc_y_*	ramp_t6_kaneishi_set-0006	acc=0.280370	macroF1=0.089057	dAcc=+0.010483	dF1=+0.003725
+ABLATE rf_dataset_kanoga_all	acc_y_*	stair_t8_kanoga_set-0006	acc=0.853853	macroF1=0.820973	dAcc=+0.004429	dF1=-0.005168
+ABLATE rf_dataset_kanoga_all	acc_y_*	stair_t6_kaneishi_set-0006	acc=0.383707	macroF1=0.364801	dAcc=+0.022432	dF1=+0.032057
+ABLATE rf_dataset_kanoga_all	acc_z_*	ramp_t6_kanoga_set-0006	acc=0.805285	macroF1=0.782367	dAcc=-0.002782	dF1=-0.006758
+ABLATE rf_dataset_kanoga_all	acc_z_*	ramp_t6_kaneishi_set-0006	acc=0.283659	macroF1=0.090572	dAcc=+0.013772	dF1=+0.005240
+ABLATE rf_dataset_kanoga_all	acc_z_*	stair_t8_kanoga_set-0006	acc=0.850310	macroF1=0.542989	dAcc=+0.000886	dF1=-0.283152
+ABLATE rf_dataset_kanoga_all	acc_z_*	stair_t6_kaneishi_set-0006	acc=0.325856	macroF1=0.323122	dAcc=-0.035419	dF1=-0.009623
+ABLATE rf_dataset_kanoga_all	gyro_x_*	ramp_t6_kanoga_set-0006	acc=0.813630	macroF1=0.799881	dAcc=+0.005563	dF1=+0.010756
+ABLATE rf_dataset_kanoga_all	gyro_x_*	ramp_t6_kaneishi_set-0006	acc=0.281398	macroF1=0.090012	dAcc=+0.011511	dF1=+0.004680
+ABLATE rf_dataset_kanoga_all	gyro_x_*	stair_t8_kanoga_set-0006	acc=0.847653	macroF1=0.652353	dAcc=-0.001771	dF1=-0.173789
+ABLATE rf_dataset_kanoga_all	gyro_x_*	stair_t6_kaneishi_set-0006	acc=0.347107	macroF1=0.324471	dAcc=-0.014168	dF1=-0.008274
+ABLATE rf_dataset_kanoga_all	gyro_y_*	ramp_t6_kanoga_set-0006	acc=0.802503	macroF1=0.783499	dAcc=-0.005563	dF1=-0.005626
+ABLATE rf_dataset_kanoga_all	gyro_y_*	ramp_t6_kaneishi_set-0006	acc=0.284481	macroF1=0.091364	dAcc=+0.014594	dF1=+0.006032
+ABLATE rf_dataset_kanoga_all	gyro_y_*	stair_t8_kanoga_set-0006	acc=0.855624	macroF1=0.660629	dAcc=+0.006200	dF1=-0.165513
+ABLATE rf_dataset_kanoga_all	gyro_y_*	stair_t6_kaneishi_set-0006	acc=0.340024	macroF1=0.334013	dAcc=-0.021251	dF1=+0.001268
+ABLATE rf_dataset_kanoga_all	gyro_z_*	ramp_t6_kanoga_set-0006	acc=0.802503	macroF1=0.779692	dAcc=-0.005563	dF1=-0.009433
+ABLATE rf_dataset_kanoga_all	gyro_z_*	ramp_t6_kaneishi_set-0006	acc=0.267626	macroF1=0.083339	dAcc=-0.002261	dF1=-0.001993
+ABLATE rf_dataset_kanoga_all	gyro_z_*	stair_t8_kanoga_set-0006	acc=0.846767	macroF1=0.811746	dAcc=-0.002657	dF1=-0.014395
+ABLATE rf_dataset_kanoga_all	gyro_z_*	stair_t6_kaneishi_set-0006	acc=0.365998	macroF1=0.332794	dAcc=+0.004723	dF1=+0.000050
+ABLATE rf_dataset_kanoga_all	quat_w_*	ramp_t6_kanoga_set-0006	acc=0.805285	macroF1=0.782456	dAcc=-0.002782	dF1=-0.006668
+ABLATE rf_dataset_kanoga_all	quat_w_*	ramp_t6_kaneishi_set-0006	acc=0.305242	macroF1=0.114761	dAcc=+0.035355	dF1=+0.029430
+ABLATE rf_dataset_kanoga_all	quat_w_*	stair_t8_kanoga_set-0006	acc=0.854739	macroF1=0.656807	dAcc=+0.005314	dF1=-0.169335
+ABLATE rf_dataset_kanoga_all	quat_w_*	stair_t6_kaneishi_set-0006	acc=0.396694	macroF1=0.364035	dAcc=+0.035419	dF1=+0.031291
+ABLATE rf_dataset_kanoga_all	quat_x_*	ramp_t6_kanoga_set-0006	acc=0.813630	macroF1=0.800390	dAcc=+0.005563	dF1=+0.011265
+ABLATE rf_dataset_kanoga_all	quat_x_*	ramp_t6_kaneishi_set-0006	acc=0.316547	macroF1=0.144743	dAcc=+0.046660	dF1=+0.059411
+ABLATE rf_dataset_kanoga_all	quat_x_*	stair_t8_kanoga_set-0006	acc=0.879539	macroF1=0.851841	dAcc=+0.030115	dF1=+0.025700
+ABLATE rf_dataset_kanoga_all	quat_x_*	stair_t6_kaneishi_set-0006	acc=0.338843	macroF1=0.333753	dAcc=-0.022432	dF1=+0.001009
+ABLATE rf_dataset_kanoga_all	quat_y_*	ramp_t6_kanoga_set-0006	acc=0.817803	macroF1=0.804934	dAcc=+0.009736	dF1=+0.015810
+ABLATE rf_dataset_kanoga_all	quat_y_*	ramp_t6_kaneishi_set-0006	acc=0.272765	macroF1=0.089386	dAcc=+0.002878	dF1=+0.004055
+ABLATE rf_dataset_kanoga_all	quat_y_*	stair_t8_kanoga_set-0006	acc=0.868025	macroF1=0.837524	dAcc=+0.018601	dF1=+0.011382
+ABLATE rf_dataset_kanoga_all	quat_y_*	stair_t6_kaneishi_set-0006	acc=0.355372	macroF1=0.349330	dAcc=-0.005903	dF1=+0.016586
+ABLATE rf_dataset_kanoga_all	quat_z_*	ramp_t6_kanoga_set-0006	acc=0.803894	macroF1=0.787022	dAcc=-0.004172	dF1=-0.002103
+ABLATE rf_dataset_kanoga_all	quat_z_*	ramp_t6_kaneishi_set-0006	acc=0.276259	macroF1=0.089846	dAcc=+0.006372	dF1=+0.004514
+ABLATE rf_dataset_kanoga_all	quat_z_*	stair_t8_kanoga_set-0006	acc=0.860939	macroF1=0.824361	dAcc=+0.011515	dF1=-0.001780
+ABLATE rf_dataset_kanoga_all	quat_z_*	stair_t6_kaneishi_set-0006	acc=0.361275	macroF1=0.353736	dAcc=+0.000000	dF1=+0.020991
+ABLATE rf_dataset_kanoga_all	encoder_angle_*	ramp_t6_kanoga_set-0006	acc=0.812239	macroF1=0.783056	dAcc=+0.004172	dF1=-0.006069
+ABLATE rf_dataset_kanoga_all	encoder_angle_*	ramp_t6_kaneishi_set-0006	acc=0.261665	macroF1=0.079664	dAcc=-0.008222	dF1=-0.005667
+ABLATE rf_dataset_kanoga_all	encoder_angle_*	stair_t8_kanoga_set-0006	acc=0.856510	macroF1=0.825578	dAcc=+0.007086	dF1=-0.000564
+ABLATE rf_dataset_kanoga_all	encoder_angle_*	stair_t6_kaneishi_set-0006	acc=0.362456	macroF1=0.347211	dAcc=+0.001181	dF1=+0.014467
+ABLATE rf_dataset_kanoga_all	grf_x_*	ramp_t6_kanoga_set-0006	acc=0.801113	macroF1=0.797100	dAcc=-0.006954	dF1=+0.007975
+ABLATE rf_dataset_kanoga_all	grf_x_*	ramp_t6_kaneishi_set-0006	acc=0.269270	macroF1=0.087790	dAcc=-0.000617	dF1=+0.002459
+ABLATE rf_dataset_kanoga_all	grf_x_*	stair_t8_kanoga_set-0006	acc=0.860939	macroF1=0.827252	dAcc=+0.011515	dF1=+0.001111
+ABLATE rf_dataset_kanoga_all	grf_x_*	stair_t6_kaneishi_set-0006	acc=0.317591	macroF1=0.260471	dAcc=-0.043684	dF1=-0.072274
+ABLATE rf_dataset_kanoga_all	grf_y_*	ramp_t6_kanoga_set-0006	acc=0.806676	macroF1=0.780748	dAcc=-0.001391	dF1=-0.008377
+ABLATE rf_dataset_kanoga_all	grf_y_*	ramp_t6_kaneishi_set-0006	acc=0.277287	macroF1=0.087797	dAcc=+0.007400	dF1=+0.002465
+ABLATE rf_dataset_kanoga_all	grf_y_*	stair_t8_kanoga_set-0006	acc=0.864482	macroF1=0.834035	dAcc=+0.015058	dF1=+0.007894
+ABLATE rf_dataset_kanoga_all	grf_y_*	stair_t6_kaneishi_set-0006	acc=0.355372	macroF1=0.351604	dAcc=-0.005903	dF1=+0.018860
+ABLATE rf_dataset_kanoga_all	grf_z_*	ramp_t6_kanoga_set-0006	acc=0.806676	macroF1=0.781045	dAcc=-0.001391	dF1=-0.008079
+ABLATE rf_dataset_kanoga_all	grf_z_*	ramp_t6_kaneishi_set-0006	acc=0.272970	macroF1=0.089011	dAcc=+0.003083	dF1=+0.003679
+ABLATE rf_dataset_kanoga_all	grf_z_*	stair_t8_kanoga_set-0006	acc=0.857396	macroF1=0.820772	dAcc=+0.007972	dF1=-0.005370
+ABLATE rf_dataset_kanoga_all	grf_z_*	stair_t6_kaneishi_set-0006	acc=0.354191	macroF1=0.358696	dAcc=-0.007084	dF1=+0.025951
+ABLATE rf_dataset_kanoga_all	grt_x_*	ramp_t6_kanoga_set-0006	acc=0.798331	macroF1=0.773652	dAcc=-0.009736	dF1=-0.015472
+ABLATE rf_dataset_kanoga_all	grt_x_*	ramp_t6_kaneishi_set-0006	acc=0.269681	macroF1=0.091699	dAcc=-0.000206	dF1=+0.006367
+ABLATE rf_dataset_kanoga_all	grt_x_*	stair_t8_kanoga_set-0006	acc=0.853853	macroF1=0.823400	dAcc=+0.004429	dF1=-0.002742
+ABLATE rf_dataset_kanoga_all	grt_x_*	stair_t6_kaneishi_set-0006	acc=0.329398	macroF1=0.244007	dAcc=-0.031877	dF1=-0.088737
+ABLATE rf_dataset_kanoga_all	grt_y_*	ramp_t6_kanoga_set-0006	acc=0.809458	macroF1=0.800110	dAcc=+0.001391	dF1=+0.010985
+ABLATE rf_dataset_kanoga_all	grt_y_*	ramp_t6_kaneishi_set-0006	acc=0.262076	macroF1=0.083053	dAcc=-0.007811	dF1=-0.002278
+ABLATE rf_dataset_kanoga_all	grt_y_*	stair_t8_kanoga_set-0006	acc=0.812223	macroF1=0.789410	dAcc=-0.037201	dF1=-0.036732
+ABLATE rf_dataset_kanoga_all	grt_y_*	stair_t6_kaneishi_set-0006	acc=0.322314	macroF1=0.299489	dAcc=-0.038961	dF1=-0.033255
+ABLATE rf_dataset_kanoga_all	grt_z_*	ramp_t6_kanoga_set-0006	acc=0.805285	macroF1=0.777702	dAcc=-0.002782	dF1=-0.011422
+ABLATE rf_dataset_kanoga_all	grt_z_*	ramp_t6_kaneishi_set-0006	acc=0.282220	macroF1=0.095237	dAcc=+0.012333	dF1=+0.009905
+ABLATE rf_dataset_kanoga_all	grt_z_*	stair_t8_kanoga_set-0006	acc=0.852081	macroF1=0.821844	dAcc=+0.002657	dF1=-0.004298
+ABLATE rf_dataset_kanoga_all	grt_z_*	stair_t6_kaneishi_set-0006	acc=0.357733	macroF1=0.352002	dAcc=-0.003542	dF1=+0.019257
+MODEL rf_dataset_kaneishi_all	size	5952012
+EVAL rf_dataset_kaneishi_all	ramp_t6_kanoga_set-0006	acc	0.361613
+EVAL rf_dataset_kaneishi_all	ramp_t6_kanoga_set-0006	macroF1	0.207498
+EVAL rf_dataset_kaneishi_all	ramp_t6_kaneishi_set-0006	acc	0.371429
+EVAL rf_dataset_kaneishi_all	ramp_t6_kaneishi_set-0006	macroF1	0.247041
+EVAL rf_dataset_kaneishi_all	stair_t8_kanoga_set-0006	acc	0.397697
+EVAL rf_dataset_kaneishi_all	stair_t8_kanoga_set-0006	macroF1	0.254459
+EVAL rf_dataset_kaneishi_all	stair_t6_kaneishi_set-0006	acc	0.917355
+EVAL rf_dataset_kaneishi_all	stair_t6_kaneishi_set-0006	macroF1	0.862840
+ABLATE rf_dataset_kaneishi_all	acc_x_*	ramp_t6_kanoga_set-0006	acc=0.356050	macroF1=0.203837	dAcc=-0.005563	dF1=-0.003660
+ABLATE rf_dataset_kaneishi_all	acc_x_*	ramp_t6_kaneishi_set-0006	acc=0.371634	macroF1=0.206987	dAcc=+0.000206	dF1=-0.040053
+ABLATE rf_dataset_kaneishi_all	acc_x_*	stair_t8_kanoga_set-0006	acc=0.441098	macroF1=0.302261	dAcc=+0.043401	dF1=+0.047802
+ABLATE rf_dataset_kaneishi_all	acc_x_*	stair_t6_kaneishi_set-0006	acc=0.911452	macroF1=0.856987	dAcc=-0.005903	dF1=-0.005853
+ABLATE rf_dataset_kaneishi_all	acc_y_*	ramp_t6_kanoga_set-0006	acc=0.361613	macroF1=0.202676	dAcc=+0.000000	dF1=-0.004822
+ABLATE rf_dataset_kaneishi_all	acc_y_*	ramp_t6_kaneishi_set-0006	acc=0.378006	macroF1=0.209647	dAcc=+0.006578	dF1=-0.037394
+ABLATE rf_dataset_kaneishi_all	acc_y_*	stair_t8_kanoga_set-0006	acc=0.439327	macroF1=0.284386	dAcc=+0.041630	dF1=+0.029927
+ABLATE rf_dataset_kaneishi_all	acc_y_*	stair_t6_kaneishi_set-0006	acc=0.914994	macroF1=0.869910	dAcc=-0.002361	dF1=+0.007070
+ABLATE rf_dataset_kaneishi_all	acc_z_*	ramp_t6_kanoga_set-0006	acc=0.340751	macroF1=0.150971	dAcc=-0.020862	dF1=-0.056527
+ABLATE rf_dataset_kaneishi_all	acc_z_*	ramp_t6_kaneishi_set-0006	acc=0.367523	macroF1=0.202667	dAcc=-0.003905	dF1=-0.044374
+ABLATE rf_dataset_kaneishi_all	acc_z_*	stair_t8_kanoga_set-0006	acc=0.369353	macroF1=0.198208	dAcc=-0.028344	dF1=-0.056251
+ABLATE rf_dataset_kaneishi_all	acc_z_*	stair_t6_kaneishi_set-0006	acc=0.914994	macroF1=0.868493	dAcc=-0.002361	dF1=+0.005653
+ABLATE rf_dataset_kaneishi_all	gyro_x_*	ramp_t6_kanoga_set-0006	acc=0.358832	macroF1=0.187790	dAcc=-0.002782	dF1=-0.019708
+ABLATE rf_dataset_kaneishi_all	gyro_x_*	ramp_t6_kaneishi_set-0006	acc=0.365262	macroF1=0.201754	dAcc=-0.006166	dF1=-0.045287
+ABLATE rf_dataset_kaneishi_all	gyro_x_*	stair_t8_kanoga_set-0006	acc=0.385297	macroF1=0.227384	dAcc=-0.012400	dF1=-0.027075
+ABLATE rf_dataset_kaneishi_all	gyro_x_*	stair_t6_kaneishi_set-0006	acc=0.929162	macroF1=0.712242	dAcc=+0.011806	dF1=-0.150598
+ABLATE rf_dataset_kaneishi_all	gyro_y_*	ramp_t6_kanoga_set-0006	acc=0.314325	macroF1=0.110541	dAcc=-0.047288	dF1=-0.096956
+ABLATE rf_dataset_kaneishi_all	gyro_y_*	ramp_t6_kaneishi_set-0006	acc=0.364851	macroF1=0.201175	dAcc=-0.006578	dF1=-0.045865
+ABLATE rf_dataset_kaneishi_all	gyro_y_*	stair_t8_kanoga_set-0006	acc=0.395040	macroF1=0.206370	dAcc=-0.002657	dF1=-0.048089
+ABLATE rf_dataset_kaneishi_all	gyro_y_*	stair_t6_kaneishi_set-0006	acc=0.904368	macroF1=0.681302	dAcc=-0.012987	dF1=-0.181538
+ABLATE rf_dataset_kaneishi_all	gyro_z_*	ramp_t6_kanoga_set-0006	acc=0.318498	macroF1=0.104842	dAcc=-0.043115	dF1=-0.102655
+ABLATE rf_dataset_kaneishi_all	gyro_z_*	ramp_t6_kaneishi_set-0006	acc=0.373895	macroF1=0.250156	dAcc=+0.002467	dF1=+0.003116
+ABLATE rf_dataset_kaneishi_all	gyro_z_*	stair_t8_kanoga_set-0006	acc=0.371125	macroF1=0.228787	dAcc=-0.026572	dF1=-0.025672
+ABLATE rf_dataset_kaneishi_all	gyro_z_*	stair_t6_kaneishi_set-0006	acc=0.883117	macroF1=0.827543	dAcc=-0.034238	dF1=-0.035297
+ABLATE rf_dataset_kaneishi_all	quat_w_*	ramp_t6_kanoga_set-0006	acc=0.344924	macroF1=0.187680	dAcc=-0.016690	dF1=-0.019817
+ABLATE rf_dataset_kaneishi_all	quat_w_*	ramp_t6_kaneishi_set-0006	acc=0.367934	macroF1=0.204717	dAcc=-0.003494	dF1=-0.042324
+ABLATE rf_dataset_kaneishi_all	quat_w_*	stair_t8_kanoga_set-0006	acc=0.391497	macroF1=0.219611	dAcc=-0.006200	dF1=-0.034848
+ABLATE rf_dataset_kaneishi_all	quat_w_*	stair_t6_kaneishi_set-0006	acc=0.914994	macroF1=0.690815	dAcc=-0.002361	dF1=-0.172025
+ABLATE rf_dataset_kaneishi_all	quat_x_*	ramp_t6_kanoga_set-0006	acc=0.347705	macroF1=0.196912	dAcc=-0.013908	dF1=-0.010585
+ABLATE rf_dataset_kaneishi_all	quat_x_*	ramp_t6_kaneishi_set-0006	acc=0.371840	macroF1=0.208515	dAcc=+0.000411	dF1=-0.038526
+ABLATE rf_dataset_kaneishi_all	quat_x_*	stair_t8_kanoga_set-0006	acc=0.418069	macroF1=0.272718	dAcc=+0.020372	dF1=+0.018259
+ABLATE rf_dataset_kaneishi_all	quat_x_*	stair_t6_kaneishi_set-0006	acc=0.920897	macroF1=0.874426	dAcc=+0.003542	dF1=+0.011586
+ABLATE rf_dataset_kaneishi_all	quat_y_*	ramp_t6_kanoga_set-0006	acc=0.347705	macroF1=0.199692	dAcc=-0.013908	dF1=-0.007805
+ABLATE rf_dataset_kaneishi_all	quat_y_*	ramp_t6_kaneishi_set-0006	acc=0.368962	macroF1=0.204985	dAcc=-0.002467	dF1=-0.042055
+ABLATE rf_dataset_kaneishi_all	quat_y_*	stair_t8_kanoga_set-0006	acc=0.411869	macroF1=0.256413	dAcc=+0.014172	dF1=+0.001954
+ABLATE rf_dataset_kaneishi_all	quat_y_*	stair_t6_kaneishi_set-0006	acc=0.911452	macroF1=0.696953	dAcc=-0.005903	dF1=-0.165887
+ABLATE rf_dataset_kaneishi_all	quat_z_*	ramp_t6_kanoga_set-0006	acc=0.343533	macroF1=0.172090	dAcc=-0.018081	dF1=-0.035408
+ABLATE rf_dataset_kaneishi_all	quat_z_*	ramp_t6_kaneishi_set-0006	acc=0.368756	macroF1=0.205594	dAcc=-0.002672	dF1=-0.041447
+ABLATE rf_dataset_kaneishi_all	quat_z_*	stair_t8_kanoga_set-0006	acc=0.409212	macroF1=0.226595	dAcc=+0.011515	dF1=-0.027863
+ABLATE rf_dataset_kaneishi_all	quat_z_*	stair_t6_kaneishi_set-0006	acc=0.924439	macroF1=0.882489	dAcc=+0.007084	dF1=+0.019649
+ABLATE rf_dataset_kaneishi_all	encoder_angle_*	ramp_t6_kanoga_set-0006	acc=0.301808	macroF1=0.090206	dAcc=-0.059805	dF1=-0.117291
+ABLATE rf_dataset_kaneishi_all	encoder_angle_*	ramp_t6_kaneishi_set-0006	acc=0.373073	macroF1=0.204272	dAcc=+0.001644	dF1=-0.042769
+ABLATE rf_dataset_kaneishi_all	encoder_angle_*	stair_t8_kanoga_set-0006	acc=0.222321	macroF1=0.086405	dAcc=-0.175376	dF1=-0.168054
+ABLATE rf_dataset_kaneishi_all	encoder_angle_*	stair_t6_kaneishi_set-0006	acc=0.886659	macroF1=0.841494	dAcc=-0.030697	dF1=-0.021346
+ABLATE rf_dataset_kaneishi_all	grf_x_*	ramp_t6_kanoga_set-0006	acc=0.342142	macroF1=0.182186	dAcc=-0.019471	dF1=-0.025312
+ABLATE rf_dataset_kaneishi_all	grf_x_*	ramp_t6_kaneishi_set-0006	acc=0.371017	macroF1=0.243967	dAcc=-0.000411	dF1=-0.003073
+ABLATE rf_dataset_kaneishi_all	grf_x_*	stair_t8_kanoga_set-0006	acc=0.410983	macroF1=0.232763	dAcc=+0.013286	dF1=-0.021696
+ABLATE rf_dataset_kaneishi_all	grf_x_*	stair_t6_kaneishi_set-0006	acc=0.920897	macroF1=0.879701	dAcc=+0.003542	dF1=+0.016861
+ABLATE rf_dataset_kaneishi_all	grf_y_*	ramp_t6_kanoga_set-0006	acc=0.347705	macroF1=0.200885	dAcc=-0.013908	dF1=-0.006612
+ABLATE rf_dataset_kaneishi_all	grf_y_*	ramp_t6_kaneishi_set-0006	acc=0.373073	macroF1=0.211135	dAcc=+0.001644	dF1=-0.035905
+ABLATE rf_dataset_kaneishi_all	grf_y_*	stair_t8_kanoga_set-0006	acc=0.444641	macroF1=0.328361	dAcc=+0.046944	dF1=+0.073902
+ABLATE rf_dataset_kaneishi_all	grf_y_*	stair_t6_kaneishi_set-0006	acc=0.917355	macroF1=0.703980	dAcc=+0.000000	dF1=-0.158859
+ABLATE rf_dataset_kaneishi_all	grf_z_*	ramp_t6_kanoga_set-0006	acc=0.347705	macroF1=0.199436	dAcc=-0.013908	dF1=-0.008061
+ABLATE rf_dataset_kaneishi_all	grf_z_*	ramp_t6_kaneishi_set-0006	acc=0.372251	macroF1=0.248275	dAcc=+0.000822	dF1=+0.001235
+ABLATE rf_dataset_kaneishi_all	grf_z_*	stair_t8_kanoga_set-0006	acc=0.390611	macroF1=0.245163	dAcc=-0.007086	dF1=-0.009296
+ABLATE rf_dataset_kaneishi_all	grf_z_*	stair_t6_kaneishi_set-0006	acc=0.898465	macroF1=0.836927	dAcc=-0.018890	dF1=-0.025913
+ABLATE rf_dataset_kaneishi_all	grt_x_*	ramp_t6_kanoga_set-0006	acc=0.364395	macroF1=0.204030	dAcc=+0.002782	dF1=-0.003467
+ABLATE rf_dataset_kaneishi_all	grt_x_*	ramp_t6_kaneishi_set-0006	acc=0.371017	macroF1=0.202648	dAcc=-0.000411	dF1=-0.044392
+ABLATE rf_dataset_kaneishi_all	grt_x_*	stair_t8_kanoga_set-0006	acc=0.416298	macroF1=0.303788	dAcc=+0.018601	dF1=+0.049329
+ABLATE rf_dataset_kaneishi_all	grt_x_*	stair_t6_kaneishi_set-0006	acc=0.920897	macroF1=0.872131	dAcc=+0.003542	dF1=+0.009291
+ABLATE rf_dataset_kaneishi_all	grt_y_*	ramp_t6_kanoga_set-0006	acc=0.363004	macroF1=0.204164	dAcc=+0.001391	dF1=-0.003334
+ABLATE rf_dataset_kaneishi_all	grt_y_*	ramp_t6_kaneishi_set-0006	acc=0.366495	macroF1=0.201489	dAcc=-0.004933	dF1=-0.045552
+ABLATE rf_dataset_kaneishi_all	grt_y_*	stair_t8_kanoga_set-0006	acc=0.441098	macroF1=0.292049	dAcc=+0.043401	dF1=+0.037590
+ABLATE rf_dataset_kaneishi_all	grt_y_*	stair_t6_kaneishi_set-0006	acc=0.930342	macroF1=0.708128	dAcc=+0.012987	dF1=-0.154712
+ABLATE rf_dataset_kaneishi_all	grt_z_*	ramp_t6_kanoga_set-0006	acc=0.357441	macroF1=0.201773	dAcc=-0.004172	dF1=-0.005725
+ABLATE rf_dataset_kaneishi_all	grt_z_*	ramp_t6_kaneishi_set-0006	acc=0.376567	macroF1=0.211098	dAcc=+0.005139	dF1=-0.035942
+ABLATE rf_dataset_kaneishi_all	grt_z_*	stair_t8_kanoga_set-0006	acc=0.405669	macroF1=0.251485	dAcc=+0.007972	dF1=-0.002973
+ABLATE rf_dataset_kaneishi_all	grt_z_*	stair_t6_kaneishi_set-0006	acc=0.923259	macroF1=0.883761	dAcc=+0.005903	dF1=+0.020921
+MODEL ALL	size	7862509
+EVAL ALL	ramp_t6_kanoga_set-0006	acc	0.705146
+EVAL ALL	ramp_t6_kanoga_set-0006	macroF1	0.483337
+EVAL ALL	ramp_t6_kaneishi_set-0006	acc	0.366290
+EVAL ALL	ramp_t6_kaneishi_set-0006	macroF1	0.211784
+EVAL ALL	stair_t8_kanoga_set-0006	acc	0.862710
+EVAL ALL	stair_t8_kanoga_set-0006	macroF1	0.813606
+EVAL ALL	stair_t6_kaneishi_set-0006	acc	0.896104
+EVAL ALL	stair_t6_kaneishi_set-0006	macroF1	0.671650
+ABLATE ALL	acc_x_*	ramp_t6_kanoga_set-0006	acc=0.726008	macroF1=0.494944	dAcc=+0.020862	dF1=+0.011607
+ABLATE ALL	acc_x_*	ramp_t6_kaneishi_set-0006	acc=0.367729	macroF1=0.212843	dAcc=+0.001439	dF1=+0.001058
+ABLATE ALL	acc_x_*	stair_t8_kanoga_set-0006	acc=0.844110	macroF1=0.798553	dAcc=-0.018601	dF1=-0.015053
+ABLATE ALL	acc_x_*	stair_t6_kaneishi_set-0006	acc=0.884298	macroF1=0.666821	dAcc=-0.011806	dF1=-0.004828
+ABLATE ALL	acc_y_*	ramp_t6_kanoga_set-0006	acc=0.710709	macroF1=0.486377	dAcc=+0.005563	dF1=+0.003040
+ABLATE ALL	acc_y_*	ramp_t6_kaneishi_set-0006	acc=0.365262	macroF1=0.210584	dAcc=-0.001028	dF1=-0.001201
+ABLATE ALL	acc_y_*	stair_t8_kanoga_set-0006	acc=0.856510	macroF1=0.809636	dAcc=-0.006200	dF1=-0.003969
+ABLATE ALL	acc_y_*	stair_t6_kaneishi_set-0006	acc=0.887839	macroF1=0.556536	dAcc=-0.008264	dF1=-0.115113
+ABLATE ALL	acc_z_*	ramp_t6_kanoga_set-0006	acc=0.702364	macroF1=0.485027	dAcc=-0.002782	dF1=+0.001690
+ABLATE ALL	acc_z_*	ramp_t6_kaneishi_set-0006	acc=0.363823	macroF1=0.208561	dAcc=-0.002467	dF1=-0.003223
+ABLATE ALL	acc_z_*	stair_t8_kanoga_set-0006	acc=0.847653	macroF1=0.801987	dAcc=-0.015058	dF1=-0.011618
+ABLATE ALL	acc_z_*	stair_t6_kaneishi_set-0006	acc=0.898465	macroF1=0.675555	dAcc=+0.002361	dF1=+0.003906
+ABLATE ALL	gyro_x_*	ramp_t6_kanoga_set-0006	acc=0.716273	macroF1=0.494410	dAcc=+0.011127	dF1=+0.011073
+ABLATE ALL	gyro_x_*	ramp_t6_kaneishi_set-0006	acc=0.366084	macroF1=0.211429	dAcc=-0.000206	dF1=-0.000355
+ABLATE ALL	gyro_x_*	stair_t8_kanoga_set-0006	acc=0.855624	macroF1=0.811286	dAcc=-0.007086	dF1=-0.002320
+ABLATE ALL	gyro_x_*	stair_t6_kaneishi_set-0006	acc=0.889020	macroF1=0.667272	dAcc=-0.007084	dF1=-0.004378
+ABLATE ALL	gyro_y_*	ramp_t6_kanoga_set-0006	acc=0.712100	macroF1=0.490152	dAcc=+0.006954	dF1=+0.006815
+ABLATE ALL	gyro_y_*	ramp_t6_kaneishi_set-0006	acc=0.354985	macroF1=0.207404	dAcc=-0.011305	dF1=-0.004380
+ABLATE ALL	gyro_y_*	stair_t8_kanoga_set-0006	acc=0.862710	macroF1=0.812252	dAcc=+0.000000	dF1=-0.001354
+ABLATE ALL	gyro_y_*	stair_t6_kaneishi_set-0006	acc=0.887839	macroF1=0.553050	dAcc=-0.008264	dF1=-0.118599
+ABLATE ALL	gyro_z_*	ramp_t6_kanoga_set-0006	acc=0.707928	macroF1=0.493313	dAcc=+0.002782	dF1=+0.009976
+ABLATE ALL	gyro_z_*	ramp_t6_kaneishi_set-0006	acc=0.369168	macroF1=0.212263	dAcc=+0.002878	dF1=+0.000479
+ABLATE ALL	gyro_z_*	stair_t8_kanoga_set-0006	acc=0.829938	macroF1=0.784295	dAcc=-0.032772	dF1=-0.029311
+ABLATE ALL	gyro_z_*	stair_t6_kaneishi_set-0006	acc=0.860685	macroF1=0.810490	dAcc=-0.035419	dF1=+0.138841
+ABLATE ALL	quat_w_*	ramp_t6_kanoga_set-0006	acc=0.716273	macroF1=0.493111	dAcc=+0.011127	dF1=+0.009774
+ABLATE ALL	quat_w_*	ramp_t6_kaneishi_set-0006	acc=0.355601	macroF1=0.207336	dAcc=-0.010689	dF1=-0.004449
+ABLATE ALL	quat_w_*	stair_t8_kanoga_set-0006	acc=0.855624	macroF1=0.815770	dAcc=-0.007086	dF1=+0.002165
+ABLATE ALL	quat_w_*	stair_t6_kaneishi_set-0006	acc=0.885478	macroF1=0.553142	dAcc=-0.010626	dF1=-0.118508
+ABLATE ALL	quat_x_*	ramp_t6_kanoga_set-0006	acc=0.709318	macroF1=0.488202	dAcc=+0.004172	dF1=+0.004865
+ABLATE ALL	quat_x_*	ramp_t6_kaneishi_set-0006	acc=0.365468	macroF1=0.212355	dAcc=-0.000822	dF1=+0.000571
+ABLATE ALL	quat_x_*	stair_t8_kanoga_set-0006	acc=0.854739	macroF1=0.803762	dAcc=-0.007972	dF1=-0.009843
+ABLATE ALL	quat_x_*	stair_t6_kaneishi_set-0006	acc=0.890201	macroF1=0.556947	dAcc=-0.005903	dF1=-0.114703
+ABLATE ALL	quat_y_*	ramp_t6_kanoga_set-0006	acc=0.723227	macroF1=0.496637	dAcc=+0.018081	dF1=+0.013300
+ABLATE ALL	quat_y_*	ramp_t6_kaneishi_set-0006	acc=0.360946	macroF1=0.210010	dAcc=-0.005344	dF1=-0.001774
+ABLATE ALL	quat_y_*	stair_t8_kanoga_set-0006	acc=0.855624	macroF1=0.814601	dAcc=-0.007086	dF1=+0.000995
+ABLATE ALL	quat_y_*	stair_t6_kaneishi_set-0006	acc=0.890201	macroF1=0.669105	dAcc=-0.005903	dF1=-0.002545
+ABLATE ALL	quat_z_*	ramp_t6_kanoga_set-0006	acc=0.717663	macroF1=0.492078	dAcc=+0.012517	dF1=+0.008741
+ABLATE ALL	quat_z_*	ramp_t6_kaneishi_set-0006	acc=0.358068	macroF1=0.208285	dAcc=-0.008222	dF1=-0.003500
+ABLATE ALL	quat_z_*	stair_t8_kanoga_set-0006	acc=0.856510	macroF1=0.811615	dAcc=-0.006200	dF1=-0.001991
+ABLATE ALL	quat_z_*	stair_t6_kaneishi_set-0006	acc=0.892562	macroF1=0.675055	dAcc=-0.003542	dF1=+0.003406
+ABLATE ALL	encoder_angle_*	ramp_t6_kanoga_set-0006	acc=0.745480	macroF1=0.507191	dAcc=+0.040334	dF1=+0.023854
+ABLATE ALL	encoder_angle_*	ramp_t6_kaneishi_set-0006	acc=0.384584	macroF1=0.219451	dAcc=+0.018294	dF1=+0.007666
+ABLATE ALL	encoder_angle_*	stair_t8_kanoga_set-0006	acc=0.864482	macroF1=0.827629	dAcc=+0.001771	dF1=+0.014023
+ABLATE ALL	encoder_angle_*	stair_t6_kaneishi_set-0006	acc=0.844156	macroF1=0.536215	dAcc=-0.051948	dF1=-0.135435
+ABLATE ALL	grf_x_*	ramp_t6_kanoga_set-0006	acc=0.689847	macroF1=0.483847	dAcc=-0.015299	dF1=+0.000509
+ABLATE ALL	grf_x_*	ramp_t6_kaneishi_set-0006	acc=0.372045	macroF1=0.215371	dAcc=+0.005755	dF1=+0.003586
+ABLATE ALL	grf_x_*	stair_t8_kanoga_set-0006	acc=0.857396	macroF1=0.808183	dAcc=-0.005314	dF1=-0.005423
+ABLATE ALL	grf_x_*	stair_t6_kaneishi_set-0006	acc=0.885478	macroF1=0.664858	dAcc=-0.010626	dF1=-0.006792
+ABLATE ALL	grf_y_*	ramp_t6_kanoga_set-0006	acc=0.706537	macroF1=0.485681	dAcc=+0.001391	dF1=+0.002343
+ABLATE ALL	grf_y_*	ramp_t6_kaneishi_set-0006	acc=0.359507	macroF1=0.206395	dAcc=-0.006783	dF1=-0.005390
+ABLATE ALL	grf_y_*	stair_t8_kanoga_set-0006	acc=0.869796	macroF1=0.830317	dAcc=+0.007086	dF1=+0.016711
+ABLATE ALL	grf_y_*	stair_t6_kaneishi_set-0006	acc=0.904368	macroF1=0.581697	dAcc=+0.008264	dF1=-0.089953
+ABLATE ALL	grf_z_*	ramp_t6_kanoga_set-0006	acc=0.723227	macroF1=0.498438	dAcc=+0.018081	dF1=+0.015100
+ABLATE ALL	grf_z_*	ramp_t6_kaneishi_set-0006	acc=0.369579	macroF1=0.214315	dAcc=+0.003289	dF1=+0.002531
+ABLATE ALL	grf_z_*	stair_t8_kanoga_set-0006	acc=0.838795	macroF1=0.790290	dAcc=-0.023915	dF1=-0.023315
+ABLATE ALL	grf_z_*	stair_t6_kaneishi_set-0006	acc=0.887839	macroF1=0.670839	dAcc=-0.008264	dF1=-0.000810
+ABLATE ALL	grt_x_*	ramp_t6_kanoga_set-0006	acc=0.713491	macroF1=0.487763	dAcc=+0.008345	dF1=+0.004426
+ABLATE ALL	grt_x_*	ramp_t6_kaneishi_set-0006	acc=0.364029	macroF1=0.209185	dAcc=-0.002261	dF1=-0.002599
+ABLATE ALL	grt_x_*	stair_t8_kanoga_set-0006	acc=0.844110	macroF1=0.805196	dAcc=-0.018601	dF1=-0.008410
+ABLATE ALL	grt_x_*	stair_t6_kaneishi_set-0006	acc=0.881936	macroF1=0.549610	dAcc=-0.014168	dF1=-0.122040
+ABLATE ALL	grt_y_*	ramp_t6_kanoga_set-0006	acc=0.702364	macroF1=0.476311	dAcc=-0.002782	dF1=-0.007026
+ABLATE ALL	grt_y_*	ramp_t6_kaneishi_set-0006	acc=0.360123	macroF1=0.207401	dAcc=-0.006166	dF1=-0.004384
+ABLATE ALL	grt_y_*	stair_t8_kanoga_set-0006	acc=0.837024	macroF1=0.802014	dAcc=-0.025686	dF1=-0.011592
+ABLATE ALL	grt_y_*	stair_t6_kaneishi_set-0006	acc=0.889020	macroF1=0.554957	dAcc=-0.007084	dF1=-0.116693
+ABLATE ALL	grt_z_*	ramp_t6_kanoga_set-0006	acc=0.719054	macroF1=0.491980	dAcc=+0.013908	dF1=+0.008643
+ABLATE ALL	grt_z_*	ramp_t6_kaneishi_set-0006	acc=0.367318	macroF1=0.213733	dAcc=+0.001028	dF1=+0.001949
+ABLATE ALL	grt_z_*	stair_t8_kanoga_set-0006	acc=0.858282	macroF1=0.819442	dAcc=-0.004429	dF1=+0.005836
+ABLATE ALL	grt_z_*	stair_t6_kaneishi_set-0006	acc=0.893743	macroF1=0.562526	dAcc=-0.002361	dF1=-0.109124

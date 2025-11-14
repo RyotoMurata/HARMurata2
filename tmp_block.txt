@@ -1,0 +1,32 @@
+
+            # 隧穂ｾ｡邨先棡繧偵ユ繧ｭ繧ｹ繝医↓菫晏ｭ・            out_txt = eval_dir / f"{model_name}__on__{test_p.stem}.txt"
+            with out_txt.open("w", encoding="utf-8") as f:
+                f.write(f"繝｢繝・Ν: {model_name}\n")
+                f.write(f"繝｢繝・Ν繧ｵ繧､繧ｺ: {size_info}\n")
+                f.write(f"迚ｹ蠕ｴ驥擾ｼ・len(used_cols)}蛻暦ｼ・ {', '.join(used_cols)}\n")
+                f.write(f"蟄ｦ鄙辰SV: {', '.join(str(p) for p in paths)}\n")
+                f.write(f"繝・せ繝亥・蜉・ {test_p}\n")
+                if test_p.suffix.lower() == ".txt":
+                    f.write(f"繝・せ繝育ｪ・ {args.test_window_ms} ms, 繝帙ャ繝・ {args.test_hop_ms} ms, fs: {args.test_fs_hz if args.test_fs_hz is not None else '謗ｨ螳・} Hz\n")
+                f.write(f"Accuracy: {acc:.6f}\n\n")
+                f.write("Classification report:\n")
+                f.write(report + "\n\n")
+                f.write("Labels order:\n")
+                f.write(", ".join(labels_order) + "\n\n")
+                f.write("豺ｷ蜷瑚｡悟・・郁｡・true, 蛻・pred・・\n")
+                for row in cm:
+                    f.write("\t".join(str(int(v)) for v in row) + "\n")
+            print(f"  -> 菫晏ｭ・ {out_txt}", flush=True)
+                # 驥崎ｦ∝ｺｦ繝ｩ繝ｳ繧ｭ繝ｳ繧ｰ・医Δ繝・Ν蜈ｱ騾壹・縺溘ａ蜀鈴聞縺縺悟推隧穂ｾ｡繝輔ぃ繧､繝ｫ縺ｫ繧りｨ倬鹸・・                if importance_text_lines:
+                    f.write("\n荳贋ｽ咲音蠕ｴ驥擾ｼ・mportance・・\n")
+                    f.write("   rank  importance        feature\n")
+                    for line in importance_text_lines:
+                        f.write(line + "\n")
+                else:
+                    f.write("\n迚ｹ蠕ｴ驥城㍾隕∝ｺｦ縺ｯ蛻ｩ逕ｨ縺ｧ縺阪∪縺帙ｓ\n")
+
+            summary_lines.append(f"EVAL {model_name}\t{test_p.stem}\tacc\t{acc:.6f}")
+
+    # 繧ｵ繝槭Μ繝ｼ繧呈嶌縺榊・縺・    with (args.out_dir / "summary.txt").open("w", encoding="utf-8") as f:
+        f.write("\n".join(summary_lines) + "\n")
+
