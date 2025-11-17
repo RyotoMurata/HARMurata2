@@ -19,9 +19,9 @@ Python 3.9+, standard library only.
 
 # ===== User-editable defaults (you can change these at the top) =====
 # Path to the annotation file to use by default
-DEFAULT_ANNOTATIONS = Path("Annotation_stair_murata.txt") #被験者を変えるときは、出力ファイル名も変えないと上書きされる
+DEFAULT_ANNOTATIONS = Path("Annotation_stais_sasaki.txt") #被験者を変えるときは、出力ファイル名も変えないと上書きされる
 # Folders where raw data files are stored (searched in order)
-DEFAULT_DATA_DIRS = [Path("1029")]
+DEFAULT_DATA_DIRS = [Path("1113")]
 # Output folder for labeled segments (if None, uses sibling labeled_output next to source file)
 DEFAULT_OUTPUT_DIR = Path("Labelled_data")
 # ====================================================================
@@ -327,7 +327,7 @@ def export_set_segments(
     Output filename: <src.stem>_set-XXXX.txt
     """
     out_dir.mkdir(parents=True, exist_ok=True)
-    out_path = out_dir / f"{src.stem}_murata_set-{set_id_str}.txt" #出力ファイルの命名
+    out_path = out_dir / f"{src.stem}_sasaki_set-{set_id_str}.txt" #出力ファイルの命名
 
     # Sort by start index to ensure chronological order
     windows_sorted = sorted(windows, key=lambda w: (w[0], w[1]))
