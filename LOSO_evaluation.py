@@ -24,7 +24,7 @@ from sklearn.pipeline import make_pipeline
 
 # ================= ユーザー設定（先頭でモデル切替！） =================
 # モデル切替: "rf" | "lda" | "qda"
-USER_MODEL: str = "qda"
+USER_MODEL: str = "rf"
 
 # LDA 用
 USER_LDA_SOLVER: str = "svd"        # "svd" | "lsqr" | "eigen"
@@ -498,7 +498,7 @@ def main() -> None:
         )
     )
     parser.add_argument("--labelled-dir", type=Path, default=Path("Labelled_data"), help="ラベル付きTXTのルート")
-    parser.add_argument("--subjects", type=str, default="kanoga,kaneishi,murata", help="対象被験者（カンマ区切り）")
+    parser.add_argument("--subjects", type=str, default="kanoga,kaneishi,murata,sasaki", help="対象被験者（カンマ区切り）")#被験者の設定
     parser.add_argument("--use-first-k", type=int, default=11, help="各被験者で使用する先頭ペア数（k-fold と LOSOの評価上限）")
     parser.add_argument("--cv-mode", type=str, choices=["loso", "kfold"], default="loso", help="評価モード")
 
@@ -549,7 +549,7 @@ def main() -> None:
     class_weight_arg = None if (isinstance(args.class_weight, str) and args.class_weight.lower() in ["none", "null", ""]) else args.class_weight
 
     # 出力先（既存命名を維持）
-    run_dir = args.out_dir / f"ne{args.n_estimators}_md{('None' if max_depth_arg is None else max_depth_arg)}_rs{args.random_state}_LOSO_qda_cv"
+    run_dir = args.out_dir / f"ne{args.n_estimators}_md{('None' if max_depth_arg is None else max_depth_arg)}_rs{args.random_state}_LOSO_rf_4subjects_cv"
     eval_dir = run_dir / "evals"
     _ensure_dir(run_dir)
     _ensure_dir(eval_dir)
