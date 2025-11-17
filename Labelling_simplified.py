@@ -19,7 +19,7 @@ Python 3.9+, standard library only.
 
 # ===== User-editable defaults (you can change these at the top) =====
 # Path to the annotation file to use by default
-DEFAULT_ANNOTATIONS = Path("Annotation_stais_sasaki.txt") #被験者を変えるときは、出力ファイル名も変えないと上書きされる
+DEFAULT_ANNOTATIONS = Path("Annotation_ramp_sasaki.txt") #被験者を変えるときは、出力ファイル名も変えないと上書きされる
 # Folders where raw data files are stored (searched in order)
 DEFAULT_DATA_DIRS = [Path("1113")]
 # Output folder for labeled segments (if None, uses sibling labeled_output next to source file)
