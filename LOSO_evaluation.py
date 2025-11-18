@@ -24,7 +24,7 @@ from sklearn.pipeline import make_pipeline
 
 # ================= ユーザー設定（先頭でモデル切替！） =================
 # モデル切替: "rf" | "lda" | "qda"
-USER_MODEL: str = "rf"
+USER_MODEL: str = "lda"
 
 # LDA 用
 USER_LDA_SOLVER: str = "svd"        # "svd" | "lsqr" | "eigen"
@@ -549,7 +549,8 @@ def main() -> None:
     class_weight_arg = None if (isinstance(args.class_weight, str) and args.class_weight.lower() in ["none", "null", ""]) else args.class_weight
 
     # 出力先（既存命名を維持）
-    run_dir = args.out_dir / f"ne{args.n_estimators}_md{('None' if max_depth_arg is None else max_depth_arg)}_rs{args.random_state}_LOSO_rf_4subjects_cv"
+    # run_dir = args.out_dir / f"ne{args.n_estimators}_md{('None' if max_depth_arg is None else max_depth_arg)}_rs{args.random_state}_LOSO_rf_4subjects_cv"
+    run_dir = args.out_dir / f"LDA_LOSO_rf_4subjects_cv"
     eval_dir = run_dir / "evals"
     _ensure_dir(run_dir)
     _ensure_dir(eval_dir)

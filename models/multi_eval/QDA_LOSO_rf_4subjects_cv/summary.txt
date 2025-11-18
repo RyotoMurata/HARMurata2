@@ -1,0 +1,100 @@
+# Run summary
+hyperparams: n_estimators=50, max_depth=10, random_state=0
+window_ms=250, hop_ms=25, fs=200.0
+mode: loso
+model: qda
+output_dir: models\multi_eval\QDA_LOSO_rf_4subjects_cv
+
+PARAMS	n_estimators=50	max_depth=10	random_state=0
+WINDOW	250ms	HOP	25ms	fs	200.0
+FEATURES	102	acc_x_mean,acc_x_std,acc_x_max,acc_x_rms,acc_x_min,acc_x_abs_sum,acc_y_mean,acc_y_std,acc_y_max,acc_y_rms,acc_y_min,acc_y_abs_sum,acc_z_mean,acc_z_std,acc_z_max,acc_z_rms,acc_z_min,acc_z_abs_sum,gyro_x_mean,gyro_x_std,gyro_x_max,gyro_x_rms,gyro_x_min,gyro_x_abs_sum,gyro_y_mean,gyro_y_std,gyro_y_max,gyro_y_rms,gyro_y_min,gyro_y_abs_sum,gyro_z_mean,gyro_z_std,gyro_z_max,gyro_z_rms,gyro_z_min,gyro_z_abs_sum,quat_w_mean,quat_w_std,quat_w_max,quat_w_rms,quat_w_min,quat_w_abs_sum,quat_x_mean,quat_x_std,quat_x_max,quat_x_rms,quat_x_min,quat_x_abs_sum,quat_y_mean,quat_y_std,quat_y_max,quat_y_rms,quat_y_min,quat_y_abs_sum,quat_z_mean,quat_z_std,quat_z_max,quat_z_rms,quat_z_min,quat_z_abs_sum,encoder_angle_mean,encoder_angle_std,encoder_angle_max,encoder_angle_rms,encoder_angle_min,encoder_angle_abs_sum,grf_x_mean,grf_x_std,grf_x_max,grf_x_rms,grf_x_min,grf_x_abs_sum,grf_y_mean,grf_y_std,grf_y_max,grf_y_rms,grf_y_min,grf_y_abs_sum,grf_z_mean,grf_z_std,grf_z_max,grf_z_rms,grf_z_min,grf_z_abs_sum,grt_x_mean,grt_x_std,grt_x_max,grt_x_rms,grt_x_min,grt_x_abs_sum,grt_y_mean,grt_y_std,grt_y_max,grt_y_rms,grt_y_min,grt_y_abs_sum,grt_z_mean,grt_z_std,grt_z_max,grt_z_rms,grt_z_min,grt_z_abs_sum
+MODE	loso
+MODEL	qda
+CVFOLD	kanoga	1	acc	0.345910
+CVFOLD	kanoga	1	macroF1	0.306818
+CVFOLD	kanoga	2	acc	0.363674
+CVFOLD	kanoga	2	macroF1	0.324301
+CVFOLD	kanoga	3	acc	0.339818
+CVFOLD	kanoga	3	macroF1	0.321203
+CVFOLD	kanoga	4	acc	0.292183
+CVFOLD	kanoga	4	macroF1	0.252575
+CVFOLD	kanoga	5	acc	0.347676
+CVFOLD	kanoga	5	macroF1	0.339753
+CVFOLD	kanoga	6	acc	0.357625
+CVFOLD	kanoga	6	macroF1	0.318800
+CVFOLD	kanoga	7	acc	0.326650
+CVFOLD	kanoga	7	macroF1	0.315161
+CVFOLD	kanoga	8	acc	0.275556
+CVFOLD	kanoga	8	macroF1	0.230903
+CVFOLD	kanoga	9	acc	0.320191
+CVFOLD	kanoga	9	macroF1	0.307329
+CVFOLD	kanoga	10	acc	0.380440
+CVFOLD	kanoga	10	macroF1	0.339392
+CVMEAN	kanoga	acc	0.334972
+CVMEAN	kanoga	macroF1	0.305624
+CVFOLD	kaneishi	1	acc	0.396825
+CVFOLD	kaneishi	1	macroF1	0.360095
+CVFOLD	kaneishi	2	acc	0.352295
+CVFOLD	kaneishi	2	macroF1	0.321695
+CVFOLD	kaneishi	3	acc	0.349503
+CVFOLD	kaneishi	3	macroF1	0.319559
+CVFOLD	kaneishi	4	acc	0.410129
+CVFOLD	kaneishi	4	macroF1	0.366658
+CVFOLD	kaneishi	5	acc	0.410184
+CVFOLD	kaneishi	5	macroF1	0.379234
+CVFOLD	kaneishi	6	acc	0.258025
+CVFOLD	kaneishi	6	macroF1	0.258385
+CVFOLD	kaneishi	7	acc	0.328276
+CVFOLD	kaneishi	7	macroF1	0.306150
+CVFOLD	kaneishi	8	acc	0.392569
+CVFOLD	kaneishi	8	macroF1	0.346813
+CVFOLD	kaneishi	9	acc	0.394527
+CVFOLD	kaneishi	9	macroF1	0.384931
+CVFOLD	kaneishi	10	acc	0.402961
+CVFOLD	kaneishi	10	macroF1	0.383158
+CVFOLD	kaneishi	11	acc	0.435421
+CVFOLD	kaneishi	11	macroF1	0.405154
+CVMEAN	kaneishi	acc	0.375520
+CVMEAN	kaneishi	macroF1	0.348348
+CVFOLD	murata	1	acc	0.436344
+CVFOLD	murata	1	macroF1	0.426329
+CVFOLD	murata	2	acc	0.428401
+CVFOLD	murata	2	macroF1	0.421265
+CVFOLD	murata	3	acc	0.460971
+CVFOLD	murata	3	macroF1	0.460668
+CVFOLD	murata	4	acc	0.443908
+CVFOLD	murata	4	macroF1	0.445272
+CVFOLD	murata	5	acc	0.415025
+CVFOLD	murata	5	macroF1	0.417055
+CVFOLD	murata	6	acc	0.450247
+CVFOLD	murata	6	macroF1	0.446063
+CVFOLD	murata	7	acc	0.472300
+CVFOLD	murata	7	macroF1	0.469845
+CVFOLD	murata	8	acc	0.387378
+CVFOLD	murata	8	macroF1	0.375782
+CVFOLD	murata	9	acc	0.459909
+CVFOLD	murata	9	macroF1	0.470476
+CVFOLD	murata	10	acc	0.417466
+CVFOLD	murata	10	macroF1	0.427332
+CVMEAN	murata	acc	0.437195
+CVMEAN	murata	macroF1	0.436008
+CVFOLD	sasaki	1	acc	0.441922
+CVFOLD	sasaki	1	macroF1	0.381895
+CVFOLD	sasaki	2	acc	0.413410
+CVFOLD	sasaki	2	macroF1	0.425061
+CVFOLD	sasaki	3	acc	0.469894
+CVFOLD	sasaki	3	macroF1	0.501684
+CVFOLD	sasaki	4	acc	0.441165
+CVFOLD	sasaki	4	macroF1	0.384417
+CVFOLD	sasaki	5	acc	0.381923
+CVFOLD	sasaki	5	macroF1	0.416848
+CVFOLD	sasaki	6	acc	0.484941
+CVFOLD	sasaki	6	macroF1	0.415897
+CVFOLD	sasaki	7	acc	0.410115
+CVFOLD	sasaki	7	macroF1	0.444522
+CVFOLD	sasaki	8	acc	0.416558
+CVFOLD	sasaki	8	macroF1	0.362249
+CVFOLD	sasaki	9	acc	0.418446
+CVFOLD	sasaki	9	macroF1	0.436987
+CVMEAN	sasaki	acc	0.430930
+CVMEAN	sasaki	macroF1	0.418840
