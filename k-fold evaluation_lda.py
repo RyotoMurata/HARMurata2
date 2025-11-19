@@ -401,7 +401,7 @@ def main() -> None:
         description="kanoga/kaneishi それぞれで、ramp+stair を1ペアとする被験者ごとの k-fold CV（LDA 版）"
     )
     parser.add_argument("--labelled-dir", type=Path, default=Path("Labelled_data"), help="ラベル付きTXTのルート")
-    parser.add_argument("--subjects", type=str, default="kanoga,kaneishi,murata", help="対象被験者（カンマ区切り）")
+    parser.add_argument("--subjects", type=str, default="kanoga,kaneishi,murata,sasaki", help="対象被験者（カンマ区切り）")
     parser.add_argument("--use-first-k", type=int, default=11, help="被験者ごとに使用する先頭ペア数（=fold の k）")
     parser.add_argument("--window-ms", type=int, default=USER_WINDOW_MS)
     parser.add_argument("--hop-ms", type=int, default=USER_HOP_MS)

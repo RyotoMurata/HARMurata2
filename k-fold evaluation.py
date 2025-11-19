@@ -21,7 +21,7 @@ from sklearn.metrics import (
 
 # ================= ユーザー設定（必要に応じて変更） =================
 # ここで出力保存のオン/オフを切り替える（True: 保存する / False: 保存しない）
-USER_SAVE_OUTPUTS: bool = False
+USER_SAVE_OUTPUTS: bool = True
 
 USER_SELECTED_STATS: List[str] = ["mean", "std", "max", "rms", "min","abs_sum"]  # 最大5種類まで想定
 # USER_SELECTED_STATS: List[str] = ["mean", "std", "max","rms", "min","ssc", "abs_sum"]
@@ -410,7 +410,7 @@ def main() -> None:
         description="kanoga/kaneishi それぞれで（ramp+stair）を1ペアとする被験者内 k-fold CV を実行"
     )
     parser.add_argument("--labelled-dir", type=Path, default=Path("Labelled_data"), help="ラベル付きTXTのルート")
-    parser.add_argument("--subjects", type=str, default="kanoga,kaneishi,murata", help="対象被験者（カンマ区切り）")
+    parser.add_argument("--subjects", type=str, default="kanoga,kaneishi,murata,sasaki", help="対象被験者（カンマ区切り）")
     parser.add_argument("--use-first-k", type=int, default=11, help="各被験者で使用する先頭ペア数（k-fold の k）")
     parser.add_argument("--window-ms", type=int, default=USER_WINDOW_MS)
     parser.add_argument("--hop-ms", type=int, default=USER_HOP_MS)
@@ -442,7 +442,7 @@ def main() -> None:
     class_weight_arg = None if (isinstance(args.class_weight, str) and args.class_weight.lower() in ["none", "null", ""]) else args.class_weight
 
     # 出力先ファイル名変更
-    run_dir = args.out_dir / f"ne{args.n_estimators}_md{('None' if max_depth_arg is None else max_depth_arg)}_rs{args.random_state}_k-fold_murata_cv"
+    run_dir = args.out_dir / f"ne{args.n_estimators}_md{('None' if max_depth_arg is None else max_depth_arg)}_rs{args.random_state}_k-fold_sasaki_cv"
     eval_dir = run_dir / "evals"
     _ensure_dir(run_dir)
     _ensure_dir(eval_dir)
