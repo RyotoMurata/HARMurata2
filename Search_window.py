@@ -7,7 +7,8 @@ from __future__ import annotations
 LABELLED_DIR = "Labelled_data"
 
 # 対象被験者（ファイル名に含まれるキー文字列でマッチ）
-SUBJECTS = ["kanoga", "kaneishi", "murata"]
+# SUBJECTS = ["kanoga", "kaneishi", "murata"]
+SUBJECTS = ["murata"]
 
 # 各被験者で使う（ramp+stair）ペアsetの先頭K件（k-foldのkになる）
 USE_FIRST_K = 11
@@ -16,10 +17,11 @@ USE_FIRST_K = 11
 USER_FS_HZ: float | None = 200.0
 
 # ==== グリッド候補（ここを編集して探索範囲を変える）====
-USER_GRID_WINDOWS_MS = [250]  # ウィンドウ長候補 [ms]
-USER_GRID_HOPS_MS    = [10, 20, 25, 40, 50, 100]            # ホップ長候補 [ms]
+USER_GRID_WINDOWS_MS = [150,200,250,350,400]  # ウィンドウ長候補 [ms]
+USER_GRID_HOPS_MS    = [20, 30, 40, 50, 100]            # ホップ長候補 [ms]
 # ===============================================================
 
+import csv
 import fnmatch
 import re
 import sys
@@ -427,6 +429,41 @@ def plot_for_subjects(
         elapsed = time.time() - start_t
         print(f"[SUBJECT] {subj} 完了: {elapsed:.1f}s")
 
+    # ====== CSV 出力 ======
+    output_dir = Path("ACC_grid_csv")
+    output_dir.mkdir(exist_ok=True)
+
+    for subj in subjects:
+        csv_path = output_dir / f"ACC_grid_{subj}.csv"
+        print(f"[INFO] CSV 出力: {csv_path}")
+
+        with csv_path.open("w", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+
+            # 1行目: ACC, Sub. A, Window length, ...
+            header1 = ["ACC", f"Sub. {subj}", "Window length"] + [""] * (len(windows_ms) - 1)
+            writer.writerow(header1)
+
+            # 2行目: Hop length, , 100, 150, 200, ...
+            header2 = ["Hop length", ""] + [str(w) for w in windows_ms]
+            writer.writerow(header2)
+
+            # 3行目以降: hop ごとの行
+            for h in sorted(hops_ms):
+                row = ["", h]
+                for w in sorted(windows_ms):
+                    if h > w:
+                        # 無効な組合せは空欄
+                        row.append("")
+                    else:
+                        acc = acc_map[subj].get((w, h), float("nan"))
+                        if np.isnan(acc):
+                            row.append("")
+                        else:
+                            # 小数はお好みで桁数調整
+                            row.append(f"{acc:.6f}")
+                writer.writerow(row)
+
     # ====== 可視化（被験者ごとに2枚表示）======
     for subj in subjects:
         # ① window固定で hop を掃く
@@ -468,6 +505,7 @@ def plot_for_subjects(
         plt.legend()
         plt.tight_layout()
         plt.show()
+
 
 def main() -> None:
     fs_hz_arg = USER_FS_HZ if USER_FS_HZ is not None else None

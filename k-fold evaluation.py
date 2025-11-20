@@ -23,7 +23,7 @@ from sklearn.metrics import (
 # ここで出力保存のオン/オフを切り替える（True: 保存する / False: 保存しない）
 USER_SAVE_OUTPUTS: bool = True
 
-USER_SELECTED_STATS: List[str] = ["mean", "std", "max", "rms", "min","abs_sum"]  # 最大5種類まで想定
+USER_SELECTED_STATS: List[str] = ["mean", "std", "max", "rms", "min","abs_sum"]  
 # USER_SELECTED_STATS: List[str] = ["mean", "std", "max","rms", "min","ssc", "abs_sum"]
 USER_RANDOM_STATE: int = 0
 USER_N_ESTIMATORS: int = 50
