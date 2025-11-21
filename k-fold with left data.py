@@ -601,7 +601,7 @@ def main() -> None:
 
     # 出力先ディレクトリ（モデル名も含める）
     model_tag = f"{args.model}{'_sc' if (args.model in ['lda','qda'] and args.scale) else ''}"
-    run_dir = args.out_dir / f"{model_tag}_ne{args.n_estimators}_md{('None' if max_depth_arg is None else max_depth_arg)}_rs{args.random_state}_k-fold_with_left cv"
+    run_dir = args.out_dir / f"{model_tag}_ne{args.n_estimators}_md{('None' if max_depth_arg is None else max_depth_arg)}_rs{args.random_state}_k-fold_with_left_sasaki cv"
     eval_dir = run_dir / "evals"
     _ensure_dir(run_dir)
     _ensure_dir(eval_dir)
