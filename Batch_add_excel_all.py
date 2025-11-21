@@ -9,7 +9,7 @@ import pandas as pd
 
 # ===== ★ CONFIG: 実行ボタン用の固定設定（ここを書き換えるだけ） =====
 USE_SCRIPT_OVERRIDES = True     # True: 下の SUBJECT/OUT_DIR を引数より優先
-SUBJECT = "murata"              # None or "" ならフィルタ無し。例: "murata"
+SUBJECT = "sasaki"              # None or "" ならフィルタ無し。例: "murata"
 OUT_DIR = "Labelled_data/merged"  # None or "" ならラベルと同じ場所に出力
 # ====================================================================
 
@@ -38,7 +38,7 @@ def parse_args() -> argparse.Namespace:
             " labelled dataset in Labelled_data, and append Excel sensor data to it."
         )
     )
-    p.add_argument("--excel-dir", default="1029", help="Directory with Excel files (.xls/.xlsx)")
+    p.add_argument("--excel-dir", default="1113", help="Directory with Excel files (.xls/.xlsx)")
     p.add_argument("--label-dir", default="Labelled_data", help="Directory with labelled .txt files")
     p.add_argument(
         "--subject",

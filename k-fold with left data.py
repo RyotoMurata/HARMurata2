@@ -45,7 +45,7 @@ except Exception:
     BRD_DEFAULT_STATS = []  # type: ignore
 
 # ==== 追加: モデル切替とスケーリングの既定 ====
-DEFAULT_MODEL_KIND = "qda"       # 'rf' / 'lda' / 'qda' のいずれか
+DEFAULT_MODEL_KIND = "rf"       # 'rf' / 'lda' / 'qda' のいずれか
 DEFAULT_DA_SCALE   = True       # LDA/QDA のとき StandardScaler を適用（--no-scale で無効化可）
 
 # ==== 追加: SSC と 絶対値総和 の実装 & 登録 ====
@@ -556,7 +556,7 @@ def main() -> None:
         description="kanoga/kaneishi/murata それぞれで（ramp+stair）を1ペアとする被験者内 k-fold CV を実行"
     )
     parser.add_argument("--labelled-dir", type=Path, default=Path("Labelled_data/merged"), help="ラベル付きTXTのルート")
-    parser.add_argument("--subjects", type=str, default="kanoga,kaneishi,murata", help="対象被験者（カンマ区切り）")
+    parser.add_argument("--subjects", type=str, default="sasaki", help="対象被験者（カンマ区切り）")
     parser.add_argument("--use-first-k", type=int, default=11, help="各被験者で使用する先頭ペア数（k-fold の k）")
     parser.add_argument("--window-ms", type=int, default=USER_WINDOW_MS)
     parser.add_argument("--hop-ms", type=int, default=USER_HOP_MS)
