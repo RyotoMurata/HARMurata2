@@ -8,7 +8,7 @@ LABELLED_DIR = "Labelled_data"
 
 # 対象被験者（ファイル名に含まれるキー文字列でマッチ）
 # SUBJECTS = ["kanoga", "kaneishi", "murata"]
-SUBJECTS = ["murata"]
+SUBJECTS = ["kaneishi"]
 
 # 各被験者で使う（ramp+stair）ペアsetの先頭K件（k-foldのkになる）
 USE_FIRST_K = 11
